@@ -1,0 +1,8 @@
+<%= link_to 'ページトップ', root_path %>
+<% if current_user %>
+<%= link_to current_user.email + 'さん', edit_user_path(current_user) %>
+<%= link_to 'ログアウト', login_path, method: :delete %>
+<% else %>
+<%= link_to '新規登録', new_user_path %>
+<%= link_to 'ログイン', login_path %>
+<% end %>

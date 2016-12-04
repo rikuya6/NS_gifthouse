@@ -10,4 +10,34 @@
 #
 
 class User < ActiveRecord::Base
+  include EmailAddressChecker
+
+  # アクセサ
+
+
+  # 関連
+
+
+  # バリデーション
+  validate  :check_email
+
+  validates :email, presence: true,
+                    uniqueness: true
+
+
+  # メソッド
+
+
+  # クラスメソッド
+  has_secure_password
+
+
+  # プライベートメソッド
+  private
+
+  def check_email
+    if email.present?
+      errors.add(:email, :invalid) unless well_formed_as_email_address(email)
+    end
+  end
 end
