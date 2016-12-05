@@ -1,0 +1,25 @@
+<% @page_title = '管理画面：商品一覧' %>
+<% if @products %>
+<div>
+  <table>
+    <th width="100">名前</th>
+    <th>価格</th>
+    <th>重さ</th>
+    <th>在庫数</th>
+    <th>商品説明</th>
+    <% @products.each do |product| %>
+    <tr>
+      <td><%= product.name %></td>
+      <td><%= product.price %></td>
+      <td><%= product.weight %></td>
+      <td><%= product.stock %></td>
+      <td><%= product.note %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+
+<%= will_paginate @products %>
+<% else %>
+<p>商品がありません。</p>
+<% end %>

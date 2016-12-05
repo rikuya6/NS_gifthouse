@@ -27,6 +27,8 @@ class CreateBaseTables < ActiveRecord::Migration
       t.string    :name,    null: false
       t.integer   :price,   null: false
       t.float     :weight,  null: false
+      t.integer   :stock,   null: false
+      t.string    :note,    null: false
       t.timestamps null: false
     end
 

@@ -69,15 +69,18 @@ ActiveRecord::Schema.define(version: 20160000000001) do
     t.string   "name",       null: false
     t.integer  "price",      null: false
     t.float    "weight",     null: false
+    t.integer  "stock",      null: false
+    t.string   "note",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",           null: false
-    t.string   "password_digest", null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "email",                           null: false
+    t.boolean  "administrator",   default: false, null: false
+    t.string   "password_digest",                 null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   create_table "wrappings", force: :cascade do |t|
