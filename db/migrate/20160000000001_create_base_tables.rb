@@ -2,8 +2,9 @@ class CreateBaseTables < ActiveRecord::Migration
   def self.up
     # ユーザ
     create_table :users do |t|
-      t.string :email,            null: false
-      t.string :password_digest,  null: false
+      t.string  :email,            null: false
+      t.boolean :administrator,   null: false, default: false
+      t.string  :password_digest,  null: false
 
       t.timestamps null: false
     end
