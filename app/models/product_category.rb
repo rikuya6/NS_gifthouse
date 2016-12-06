@@ -10,4 +10,9 @@
 #
 
 class ProductCategory < ActiveRecord::Base
+
+  # 関連
+  belongs_to :product
+  belongs_to :category
+
 end

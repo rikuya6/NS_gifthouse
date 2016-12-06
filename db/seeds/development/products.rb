@@ -1,4 +1,4 @@
-1.upto(100) do |idx|
+1.upto(20) do |idx|
   Product.create(
     name: "商品#{idx}",
     price: idx * 100,

@@ -13,4 +13,14 @@
 #
 
 class Product < ActiveRecord::Base
+
+  # アクセサ
+
+
+  # 関連
+  has_many :product_category
+  has_many :category, through: :product_category
+
+
+  # バリデーション
 end

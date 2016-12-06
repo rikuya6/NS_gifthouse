@@ -1,6 +1,4 @@
-<% @page_title = '管理画面：商品一覧' %>
-
-<%= link_to '新規作成', new_admin_product_path %>
+<% @page_title = '商品一覧' %>
 <% if @products %>
 <div>
   <table>
@@ -9,7 +7,6 @@
     <th>重さ</th>
     <th>在庫数</th>
     <th>商品説明</th>
-    <th>カテゴリ</th>
     <% @products.each do |product| %>
     <tr>
       <td><%= product.name %></td>
@@ -17,12 +14,6 @@
       <td><%= product.weight %></td>
       <td><%= product.stock %></td>
       <td><%= product.note %></td>
-      <td>
-        <% product.category.each do |categories| %>
-          <%= categories.name %>
-        <% end %>
-      </td>
-      <td><%= link_to '編集', edit_admin_product_path(product.id) %></td>
     </tr>
     <% end %>
   </table>

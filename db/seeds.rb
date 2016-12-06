@@ -1,4 +1,4 @@
-table_name = %w(users products)
+table_name = %w(users products categories product_categories)
 table_name.each do |name|
   path = Rails.root.join('db/seeds', Rails.env, name + '.rb')
   if File.exist?(path)

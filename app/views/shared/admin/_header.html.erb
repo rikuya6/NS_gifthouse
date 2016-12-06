@@ -1,7 +1,6 @@
-<%= link_to 'ページトップ', root_path %>
-<%= link_to '商品一覧', products_path %>
+<%= link_to '管理画面トップ', admin_root_path %>
+<%= link_to '商品一覧', admin_products_path %>
 <% if current_user %>
-<%= link_to '管理画面', admin_root_path if current_user.try(:administrator?) %>
 <%= link_to current_user.email + 'さん', edit_user_path(current_user) %>
 <%= link_to 'ログアウト', login_path, method: :delete %>
 <% else %>

@@ -1,0 +1,19 @@
+<% @page_title = '管理画面：ユーザ一覧' %>
+<% if @users %>
+<div>
+  <table>
+    <th>id</th>
+    <th>メールアドレス</th>
+    <% @users.each do |user| %>
+    <tr>
+      <td><%= user.id %></td>
+      <td><%= user.email %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+
+<%= will_paginate @users %>
+<% else %>
+<p>商品がありません。</p>
+<% end %>

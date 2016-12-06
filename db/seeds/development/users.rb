@@ -5,7 +5,7 @@ User.create(
   administrator: true
 )
 
-0.upto(9) do |idx|
+0.upto(20) do |idx|
   User.create(
     email: "#{idx}@test.com",
     password: 'password',
