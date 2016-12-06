@@ -31,6 +31,12 @@ class Admin::ProductsController < Admin::Base
     end
   end
 
+  def destroy
+    @product = Product.find(params[:id])
+    @product.destroy
+    redirect_to admin_root_path, notice: '商品を削除しました。'
+  end
+
 
   private
 

@@ -13,6 +13,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 gem 'rails-i18n'
 gem 'will_paginate'
+gem 'less-rails'
+gem 'twitter-bootstrap-rails'
 
 group :test do
   gem 'factory_girl_rails'
