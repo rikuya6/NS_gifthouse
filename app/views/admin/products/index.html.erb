@@ -1,33 +1,44 @@
 <% @page_title = '管理画面：商品一覧' %>
 
-<%= link_to '新規作成', new_admin_product_path %>
-<% if @products %>
-<div>
-  <table>
-    <th width="100">名前</th>
-    <th>価格</th>
-    <th>重さ</th>
-    <th>在庫数</th>
-    <th>商品説明</th>
-    <th>カテゴリ</th>
-    <% @products.each do |product| %>
-    <tr>
-      <td><%= product.name %></td>
-      <td><%= product.price %></td>
-      <td><%= product.weight %></td>
-      <td><%= product.stock %></td>
-      <td><%= product.note %></td>
-      <td>
-        <% product.category.each do |categories| %>
-          <%= categories.name %>
-        <% end %>
-      </td>
-      <td><%= link_to '編集', edit_admin_product_path(product.id) %></td>
-    </tr>
-    <% end %>
-  </table>
+<div class="page-header">
+  <%= link_to '新規作成', new_admin_product_path, class: 'btn btn-primary' %>
 </div>
 
+<% if @products %>
+<div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th width="100">名前</th>
+        <th>価格</th>
+        <th>重さ</th>
+        <th>在庫数</th>
+        <th>商品説明</th>
+        <th>カテゴリ</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= product.price %></td>
+        <td><%= product.weight %></td>
+        <td><%= product.stock %></td>
+        <td><%= product.note %></td>
+        <td>
+          <% product.category.each do |categories| %>
+            <%= categories.name %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to '編集', edit_admin_product_path(product.id), class: 'btn btn-default btn-xs' %>
+          <%= link_to '削除', admin_product_path(product.id), method: :delete, class: 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 <%= will_paginate @products %>
 <% else %>
 <p>商品がありません。</p>
