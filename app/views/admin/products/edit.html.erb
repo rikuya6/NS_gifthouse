@@ -8,8 +8,8 @@
 
 <%= form_for [:admin, @product], class: 'form-horizontal' do |f| %>
   <%= render 'form', f: f %>
-  <div class="form-group">
-    <div class="col-lg-offset-2 col-lg-10">
+  <div class="row form-group">
+    <div class="col-lg-offset-2 col-lg-2">
       <%= f.submit '商品を更新する', class: 'btn btn-primary' %>
     </div>
   </div>
