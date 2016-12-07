@@ -6,6 +6,7 @@ ja:
     attributes:
       user:
         email: 'メールアドレス'
+        administrator: '管理者'
         password: 'パスワード'
         password_confirmation: 'パスワードの確認'
       product:
