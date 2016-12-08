@@ -1,7 +1,7 @@
 class Admin::UsersController < Admin::Base
 
   def index
-    @users = User.paginate(page: params[:page], per_page: 15)
+    @users = User.order(administrator: :DESC, id: :asc).page(params[:page])
   end
 
 

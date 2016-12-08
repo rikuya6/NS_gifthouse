@@ -21,6 +21,10 @@ ja:
         expired_at_too_old: 'は掲載開始日より新しい日時にしてください。'
         too_big_image: 'が大きすぎます(最大64KB)。'
         invalid_image: 'の形式が違います(JPEG, GIF, PNGのいずれかにしてください)。'
-  will_paginate:
-    previous_label: '前'
-    next_label: '次'
+  views:
+    pagination:
+      first: '&laquo;'
+      last: '&raquo;'
+      previous: '&lsaquo;'
+      next: '&rsaquo;'
+      truncate: "..."

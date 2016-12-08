@@ -1,7 +1,7 @@
 class Admin::ProductsController < Admin::Base
 
   def index
-    @products = Product.paginate(page: params[:page], per_page: 15)
+    @products = Product.page(params[:page])
   end
 
   def new
