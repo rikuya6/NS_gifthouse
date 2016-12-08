@@ -5,8 +5,7 @@
 </div>
 
 <%= link_to '新規作成', new_admin_product_path, class: 'btn btn-primary' %>
-<% if @products %>
-
+<% if @products.present? %>
 <div class="table-responsive">
   <table class="table table-striped table-bordered">
     <thead>
@@ -34,9 +33,10 @@
           <% end %>
         </td>
         <td>
-          <%= link_to '編集', edit_admin_product_path(product.id), class: 'btn btn-default btn-xs' %>
+          <%= link_to '編集', edit_admin_product_path(product.id), class: 'btn btn-default btn-xs',
+            style: 'width: 5em' %>
           <%= link_to '削除', admin_product_path(product.id), method: :delete, class: 'btn btn-xs btn-danger',
-            data: { disable_with: '削除中'} %>
+            style: 'width: 5em;', data: { disable_with: '削除中'} %>
         </td>
       </tr>
       <% end %>
