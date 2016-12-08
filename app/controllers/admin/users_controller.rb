@@ -22,7 +22,7 @@ class Admin::UsersController < Admin::Base
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to admin_root_path, notice: 'ユーザを削除しました。'
+    redirect_to admin_users_path, notice: 'ユーザを削除しました。'
   end
 
   private
