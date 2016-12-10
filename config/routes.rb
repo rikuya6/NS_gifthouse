@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     root to: 'products#index'
     resources :products
     resources :users
+    resources :orders
   end
 
   match '*anything' => 'top#not_found', via: [:get, :post, :patch, :delete]

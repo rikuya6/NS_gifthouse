@@ -10,13 +10,12 @@
 
 class Category < ActiveRecord::Base
 
-  # アクセサ
-
-
   # 関連
-  has_many :product_category
+  has_many :product_categories, dependent: :destroy
   has_many :products, through: :product_category
 
 
   # バリデーション
+  validates :name,  presence: true,
+                    uniqueness: true
 end

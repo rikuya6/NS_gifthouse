@@ -14,6 +14,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 gem 'rails-i18n'
 gem 'kaminari'
+gem 'puma'
 
 group :test do
   gem 'factory_girl_rails'
@@ -34,4 +35,5 @@ group :development do
   gem 'pry-stack_explorer'
   gem 'annotate'
   gem 'bullet'
+  gem 'faker'
 end

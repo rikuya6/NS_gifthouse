@@ -3,10 +3,21 @@
 # Table name: addresses
 #
 #  id         :integer          not null, primary key
-#  buy_id     :integer          not null
+#  order_id   :integer          not null
+#  dest       :string           not null
+#  zipcode    :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
 class Address < ActiveRecord::Base
+
+  # 関連
+  belongs_to :order
+
+
+  # バリデーション
+  validates :dest,    presence: true
+
+  validates :zipcode, presence: true
 end

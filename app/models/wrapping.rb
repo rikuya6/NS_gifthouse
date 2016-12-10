@@ -9,4 +9,10 @@
 #
 
 class Wrapping < ActiveRecord::Base
+
+  # 関連
+  has_many :orders
+
+
+  # バリデーション
 end

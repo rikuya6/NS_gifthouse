@@ -9,4 +9,7 @@
 #
 
 class Giftbox < ActiveRecord::Base
+
+  # 関連
+  belongs_to :boxes
 end

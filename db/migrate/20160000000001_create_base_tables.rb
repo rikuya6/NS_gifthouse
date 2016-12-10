@@ -13,6 +13,7 @@ class CreateBaseTables < ActiveRecord::Migration
     # 注文
     create_table :orders do |t|
       t.integer :product_id,  null: false
+      t.integer :user_id,     null: false
       t.integer :wrapping_id, null: false
 
       t.timestamps null: false
@@ -54,7 +55,7 @@ class CreateBaseTables < ActiveRecord::Migration
     # 箱
     create_table :boxes do |t|
       t.integer :capacity,  null: false
-      t.string  :type,      null: false
+      t.string  :box_type,      null: false
       t.integer :price,     null: false
 
       t.timestamps null: false
@@ -77,7 +78,9 @@ class CreateBaseTables < ActiveRecord::Migration
 
     # 届け先
     create_table :addresses do |t|
-      t.integer :buy_id, null: false
+      t.integer :order_id, null: false
+      t.string  :dest,     null: false
+      t.string  :zipcode,  null: false
 
       t.timestamps null: false
     end
@@ -85,7 +88,7 @@ class CreateBaseTables < ActiveRecord::Migration
 
   def self.down
     drop_table :users
-    drop_table :buys
+    drop_table :orders
     drop_table :wrappings
     drop_table :products
     drop_table :categories

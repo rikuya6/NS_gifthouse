@@ -14,7 +14,9 @@
 ActiveRecord::Schema.define(version: 20160000000001) do
 
   create_table "addresses", force: :cascade do |t|
-    t.integer  "buy_id",     null: false
+    t.integer  "order_id",   null: false
+    t.string   "dest",       null: false
+    t.string   "zipcode",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -31,7 +33,7 @@ ActiveRecord::Schema.define(version: 20160000000001) do
 
   create_table "boxes", force: :cascade do |t|
     t.integer  "capacity",   null: false
-    t.string   "type",       null: false
+    t.string   "box_type",   null: false
     t.integer  "price",      null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -51,6 +53,7 @@ ActiveRecord::Schema.define(version: 20160000000001) do
 
   create_table "orders", force: :cascade do |t|
     t.integer  "product_id",  null: false
+    t.integer  "user_id",     null: false
     t.integer  "wrapping_id", null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false

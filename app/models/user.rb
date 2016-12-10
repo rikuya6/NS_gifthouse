@@ -14,10 +14,8 @@
 class User < ActiveRecord::Base
   include EmailAddressChecker
 
-  # アクセサ
-
-
   # 関連
+  has_many :orders
 
 
   # バリデーション

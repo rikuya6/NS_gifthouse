@@ -1,7 +1,7 @@
-class Admin::ProductsController < Admin::Base
+class Admin::OrdersController < Admin::Base
 
   def index
-    @products = Product.includes(:categories).page(params[:page])
+    @orders = Order.includes(:product, :wrapping).page(params[:page])
   end
 
   def show
@@ -45,8 +45,6 @@ class Admin::ProductsController < Admin::Base
   private
 
   def product_params
-    attrs = [:name, :price, :weight, :stock, :note]
-    attrs << { categories_attributes: [:id, :name] }
-    params.require(:product).permit(attrs)
+    params.require(:product).permit(:name, :price, :weight, :stock, :note)
   end
 end
