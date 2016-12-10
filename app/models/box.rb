@@ -2,11 +2,12 @@
 #
 # Table name: boxes
 #
-#  id              :integer          not null, primary key
-#  user_id         :integer          not null
-#  physical_box_id :integer          not null
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  id         :integer          not null, primary key
+#  capacity   :integer          not null
+#  type       :string           not null
+#  price      :integer          not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 
 class Box < ActiveRecord::Base

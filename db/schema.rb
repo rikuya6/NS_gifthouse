@@ -20,23 +20,19 @@ ActiveRecord::Schema.define(version: 20160000000001) do
   end
 
   create_table "box_details", force: :cascade do |t|
-    t.integer  "box_id",     null: false
+    t.integer  "giftbox_id", null: false
     t.integer  "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "box_details", ["box_id"], name: "index_box_details_on_box_id"
+  add_index "box_details", ["giftbox_id"], name: "index_box_details_on_giftbox_id"
   add_index "box_details", ["product_id"], name: "index_box_details_on_product_id"
 
   create_table "boxes", force: :cascade do |t|
-    t.integer  "user_id",         null: false
-    t.integer  "physical_box_id", null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
-
-  create_table "buys", force: :cascade do |t|
+    t.integer  "capacity",   null: false
+    t.string   "type",       null: false
+    t.integer  "price",      null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -47,12 +43,17 @@ ActiveRecord::Schema.define(version: 20160000000001) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "physical_boxes", force: :cascade do |t|
-    t.float    "capacity",   null: false
-    t.string   "type",       null: false
-    t.integer  "price",      null: false
+  create_table "giftboxes", force: :cascade do |t|
+    t.integer  "box_id",     null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "product_id",  null: false
+    t.integer  "wrapping_id", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "product_categories", force: :cascade do |t|
@@ -68,9 +69,9 @@ ActiveRecord::Schema.define(version: 20160000000001) do
   create_table "products", force: :cascade do |t|
     t.string   "name",       null: false
     t.integer  "price",      null: false
-    t.float    "weight",     null: false
+    t.integer  "weight",     null: false
     t.integer  "stock",      null: false
-    t.string   "note",       null: false
+    t.text     "note",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -79,12 +80,13 @@ ActiveRecord::Schema.define(version: 20160000000001) do
     t.string   "email",                           null: false
     t.boolean  "administrator",   default: false, null: false
     t.string   "password_digest",                 null: false
+    t.string   "image"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
   end
 
   create_table "wrappings", force: :cascade do |t|
-    t.integer  "name",       null: false
+    t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

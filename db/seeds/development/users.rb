@@ -1,13 +1,13 @@
 User.create(
-  email: 'test@test.com',
+  email: 'admin@test.com',
   password: 'password',
   password_confirmation: 'password',
   administrator: true
 )
 
-0.upto(20) do |idx|
+1.upto(100) do |idx|
   User.create(
-    email: "#{idx}@test.com",
+    email: "user#{idx}@test.com",
     password: 'password',
     password_confirmation: 'password'
   )

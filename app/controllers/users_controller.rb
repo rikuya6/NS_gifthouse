@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to root_path
+      redirect_to :root, notice: 'ユーザを新規作成しました。'
     else
       render 'new'
     end
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.assign_attributes(user_params)
     if @user.save
-      redirect_to root_path, notice: 'ユーザ情報を更新しました。'
+      redirect_to (@user.administrator? ? :admin_root : :root), notice: 'ユーザ情報を更新しました。'
     else
       render 'edit'
     end

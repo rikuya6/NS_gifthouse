@@ -3,7 +3,7 @@
 <% if current_user %>
 <%= link_to '管理画面', admin_root_path if current_user.try(:administrator?) %>
 <%= link_to current_user.email + 'さん', edit_user_path(current_user) %>
-<%= link_to 'ログアウト', login_path, method: :delete %>
+<%= link_to 'ログアウト', logout_path, method: :delete %>
 <% else %>
 <%= link_to '新規登録', new_user_path %>
 <%= link_to 'ログイン', login_path %>

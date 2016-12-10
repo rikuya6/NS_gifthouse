@@ -1,10 +1,16 @@
-<% @page_title = 'Account Edit' %>
-<h1>アカウントの編集</h1>
-<%= render 'shared/errors', obj: @user %>
-<div>
-  <%= form_for(@user) do |f| %>
-    <%= render 'form', f: f %>
+<% @page_title = 'アカウント編集' %>
 
-    <%= f.submit 'アカウントを更新する' %>
-  <% end %>
+<div class="page-header">
+  <h1>アカウントの編集</h1>
 </div>
+
+<%= render 'shared/errors', obj: @user %>
+
+<%= form_for [:admin, @user], class: 'form-horizontal' do |f| %>
+  <%= render 'form', f: f %>
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-2">
+      <%= f.submit 'アカウントを更新する', class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>

@@ -15,10 +15,8 @@
         <%= render 'shared/admin/header' %>
       </div>
       <div id="content">
-      <% if flash.notice %>
-        <p class="notice"><%= flash.notice %></p>
-      <% end %>
-      <%= yield %>
+        <%= render 'shared/flash' %>
+        <%= yield %>
       </div>
       <div id="footer">
         <%= render 'shared/admin/footer' %>

@@ -10,17 +10,17 @@
 </head>
 <body>
   <div class="container">
-    <div id="header">
-      <%= render 'shared/header' %>
-    </div>
-    <div id="content">
-    <% if flash.notice %>
-      <p class="notice"><%= flash.notice %></p>
-    <% end %>
-    <%= yield %>
-    </div>
-    <div id="footer">
-      <%= render 'shared/footer' %>
+    <div class="row">
+      <div id="header">
+        <%= render 'shared/header' %>
+      </div>
+      <div id="content">
+        <%= render 'shared/flash' %>
+        <%= yield %>
+      </div>
+      <div id="footer">
+        <%= render 'shared/footer' %>
+      </div>
     </div>
   </div>
 </body>
