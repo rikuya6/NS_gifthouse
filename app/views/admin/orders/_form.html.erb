@@ -1,35 +1,64 @@
 <%= form_for [:admin, @user, @order], class: 'form-horizontal' do |f| %>
-  <div class="form-group">
-    <%= f.label :product_name, class: 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :product_name, class: 'form-control', disabled: show? %>
-    </div>
-  </div>
+  <%= f.fields_for :product do |ff| %>
 
-  <div class="form-group">
-    <%= f.label :product_price, class: 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.number_field :product_price, class: 'form-control', disabled: show? %>
+    <div class="form-group">
+      <%= ff.label :name, class: 'control-label col-md-2' %>
+      <div class="col-md-10">
+        <%= ff.text_field :name, class: 'form-control', disabled: show? %>
+      </div>
     </div>
-  </div>
 
-  <div class="form-group">
-    <%= f.label :product_weight, class: 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.number_field :product_weight, class: 'form-control', disabled: show? %>
+    <div class="form-group">
+      <%= ff.label :price, class: 'control-label col-md-2' %>
+      <div class="col-md-10">
+        <%= ff.number_field :price, class: 'form-control', disabled: show? %>
+      </div>
     </div>
-  </div>
 
-  <div class="form-group">
-    <%= f.label :product_stock, class: 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.number_field :product_stock, class: 'form-control', disabled: show? %>
+    <div class="form-group">
+      <%= ff.label :weight, class: 'control-label col-md-2' %>
+      <div class="col-md-10">
+        <%= ff.number_field :weight, class: 'form-control', disabled: show? %>
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :product_note, class: 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_area :product_note, class: 'form-control', disabled: show? %>
+
+    <div class="form-group">
+      <%= ff.label :stock, class: 'control-label col-md-2' %>
+      <div class="col-md-10">
+        <%= ff.number_field :stock, class: 'form-control', disabled: show? %>
+      </div>
     </div>
-  </div>
+    <div class="form-group">
+      <%= ff.label :note, class: 'control-label col-md-2' %>
+      <div class="col-md-10">
+        <%= ff.text_area :note, class: 'form-control', disabled: show? %>
+      </div>
+    </div>
+  <% end %>
+  <%= f.fields_for :product do |ff| %>
+    <%= ff.fields_for :categories do |fff| %>
+      <div class="form-group">
+        <%= fff.label :name, class: 'control-label col-md-2' %>
+        <div class="col-md-10">
+          <%= fff.text_area :name, class: 'form-control', disabled: show? %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+  <%= f.fields_for :wrapping do |ff| %>
+    <div class="form-group">
+      <%= ff.label :name, class: 'control-label col-md-2' %>
+      <div class="col-md-10">
+        <%= ff.text_area :name, class: 'form-control', disabled: show? %>
+      </div>
+    </div>
+  <% end %>
+  <%= f.fields_for :addresses do |ff| %>
+    <div class="form-group">
+      <%= ff.label :dest, class: 'control-label col-md-2' %>
+      <div class="col-md-10">
+        <%= ff.text_area :dest, class: 'form-control', disabled: show? %>
+      </div>
+    </div>
+  <% end %>
 <% end %>

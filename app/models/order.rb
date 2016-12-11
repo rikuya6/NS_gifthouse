@@ -18,13 +18,13 @@ class Order < ActiveRecord::Base
   belongs_to :wrapping
   has_many :addresses, dependent: :destroy
 
+  accepts_nested_attributes_for :product
+  accepts_nested_attributes_for :wrapping
+  accepts_nested_attributes_for :addresses
+
 
   # 委譲メソッド
   def product_name; product.name end
-  def product_price; product.price end
-  def product_weight; product.weight end
-  def product_stock; product.stock end
-  def product_note; product.note end
   def wrapping_name; wrapping.try(:name) end
   def address_name; addresses.dest end
 

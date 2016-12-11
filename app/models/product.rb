@@ -19,6 +19,8 @@ class Product < ActiveRecord::Base
   has_many :categories, through: :product_categories
   has_many :orders, dependent: :destroy
 
+  accepts_nested_attributes_for :categories
+
 
   # バリデーション
   validates :name,      presence: true,
