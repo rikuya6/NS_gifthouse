@@ -1,2 +1,12 @@
 <% @page_title = 'TOP' %>
-<h1>トップページです！</h1>
+
+<div class="page-header">
+  <h1>トップページです！</h1>
+</div>
+
+<h2>商品検索</h2>
+<%= form_tag :products, method: :get do %>
+  <%= text_field_tag 'keyword', params[:keyword], placeholder: 'キーワードを入力' %>
+  <%= button_tag '<i class="glyphicon glyphicon-search"></i>キーワード検索'.html_safe,
+    type: 'submit', class: 'btn btn-info' %>
+<% end %>

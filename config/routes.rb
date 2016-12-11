@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   root 'top#index'
   get 'about'  => 'top#about', as: 'about'
-
-  get 'login' => 'sessions#new', as: 'login'
   resource :sessions, only: [:create, :destroy], as: 'login', path: 'login'
   delete 'logout' => 'sessions#destroy', as: 'logout'
 

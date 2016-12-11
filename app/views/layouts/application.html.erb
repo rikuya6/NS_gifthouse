@@ -17,6 +17,22 @@
       </div>
     </div>
     <!-- 本体 -->
+    <% unless current_user %>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9">
+          <%= render 'shared/flash' %>
+          <%= yield %>
+        </div>
+        <div class="col-md-3">
+          <div class="well sidebar-nav">
+            <%= render 'shared/sidebar' %>
+          </div><!--/sidebar -->
+        </div>
+      </div><!--/row-->
+      <%= render 'shared/footer' %>
+    </div>
+    <% else %>
     <div class="container">
       <div class="row">
         <%= render 'shared/flash' %>
@@ -24,5 +40,6 @@
       </div>
       <%= render 'shared/footer' %>
     </div>
+    <% end %>
   </body>
 </html>
