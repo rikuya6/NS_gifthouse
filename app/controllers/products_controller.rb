@@ -1,11 +1,11 @@
 class ProductsController < ApplicationController
 
   def index
-    one = Product.includes(:categories).page(params[:page])
+    one = Product.includes(:categories)
     if params[:keyword].present?
       keyword = params[:keyword]
-      one = one.where('name like ?', '%'+ keyword + '%')
+      one = one.where('products.name like ?', '%' + keyword + '%')
     end
-    @products = one
+    @products = one.page(params[:page])
   end
 end

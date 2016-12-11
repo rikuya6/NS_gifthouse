@@ -28,6 +28,10 @@ class Admin::ProductsController < Admin::Base
   def update
     @product = Product.find(params[:id])
     @product.assign_attributes(product_params)
+
+    # @cateory = Category.find(params[:id])
+    # @product.product_categories << @category
+
     if @product.save
       redirect_to [:admin, @product], notice: '商品を更新しました。'
     else
@@ -47,6 +51,7 @@ class Admin::ProductsController < Admin::Base
   def product_params
     attrs = [:name, :price, :weight, :stock, :note]
     attrs << { categories_attributes: [:id, :name] }
+    attrs << { category_ids: [] }
     params.require(:product).permit(attrs)
   end
 end
