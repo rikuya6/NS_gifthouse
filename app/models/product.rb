@@ -38,9 +38,16 @@ class Product < ActiveRecord::Base
                           only_integer: true,
                         }
 
+  validates :stock,     presence: true,
+                        numericality: {
+                          allow_blank: true,
+                          greater_than_or_equal_to: 0,
+                          only_integer: true,
+                        }
+
   validates :note,      presence: true,
                         length: {
-                          maximum: 300,
+                          maximum: 500,
                           allow_blank: true,
                         }
 end

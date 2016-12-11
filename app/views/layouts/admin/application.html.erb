@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-  <title><%= page_title %></title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-  <div class="container">
-    <div class="row">
-      <div id="header">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= page_title %></title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  </head>
+  <body>
+    <!-- ヘッダ -->
+    <div class="navbar navbar-default navbar-static-top">
+      <div class="container">
         <%= render 'shared/admin/header' %>
       </div>
-      <div id="content">
+    </div>
+    <!-- 本体 -->
+    <div class="container">
+      <div class="row">
         <%= render 'shared/flash' %>
         <%= yield %>
       </div>
-      <div id="footer">
-        <%= render 'shared/admin/footer' %>
-      </div>
+      <%= render 'shared/admin/footer' %>
     </div>
-  </div>
-</body>
+  </body>
 </html>

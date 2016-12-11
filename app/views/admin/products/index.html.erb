@@ -22,17 +22,17 @@
     <tbody>
       <% @products.each do |product| %>
       <tr>
-        <td class="col-lg-2"><%= product.name %></td>
-        <td class="text-right col-lg-1"><%= number_with_delimiter(product.stock) %></td>
-        <td class="text-right col-lg-1"><%= number_with_delimiter(product.price) %></td>
-        <td class="text-right col-lg-1"><%= product.weight %></td>
-        <td class="col-lg-3"><%= product.note %></td>
-        <td class="col-lg-2">
+        <td class="col-md-2"><%= product.name %></td>
+        <td class="text-right col-md-1"><%= number_with_delimiter(product.stock) %></td>
+        <td class="text-right col-md-1"><%= number_with_delimiter(product.price) %></td>
+        <td class="text-right col-md-1"><%= product.weight %></td>
+        <td class="col-md-3"><%= product.note %></td>
+        <td class="col-md-2">
           <% product.categories.each do |categories| %>
             <%= categories.name %>
           <% end %>
         </td>
-        <td class="text-center col-lg-2">
+        <td class="text-center col-md-2">
           <%= link_to '詳細', admin_product_path(product.id), class: 'btn btn-info btn-xs',
             style: 'width: 4em' %>
           <%= link_to '削除', admin_product_path(product.id), method: :delete, class: 'btn btn-xs btn-danger',

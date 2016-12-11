@@ -2,40 +2,40 @@
 
 <%= form_for [:admin, @product], class: 'form-horizontal' do |f| %>
   <div class="form-group">
-    <%= f.label :name, class: 'control-label col-lg-2' %>
-    <div class="col-lg-10">
+    <%= f.label :name, class: 'control-label col-md-2' %>
+    <div class="col-md-10">
       <%= f.text_field :name, class: 'form-control', disabled: show? %>
     </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :price, class: 'control-label col-lg-2' %>
-    <div class="col-lg-10">
+    <%= f.label :price, class: 'control-label col-md-2' %>
+    <div class="col-md-10">
       <%= f.number_field :price, class: 'form-control', disabled: show? %>
     </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :weight, class: 'control-label col-lg-2' %>
-    <div class="col-lg-10">
+    <%= f.label :weight, class: 'control-label col-md-2' %>
+    <div class="col-md-10">
       <%= f.number_field :weight, class: 'form-control', disabled: show? %>
     </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :stock, class: 'control-label col-lg-2' %>
-    <div class="col-lg-10">
+    <%= f.label :stock, class: 'control-label col-md-2' %>
+    <div class="col-md-10">
       <%= f.number_field :stock, class: 'form-control', disabled: show? %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :note, class: 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :note, class: 'form-control', disabled: show? %>
+    <%= f.label :note, class: 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_area :note, class: 'form-control', disabled: show? %>
     </div>
   </div>
   <div class="form-group">
-    <div class="col-lg-offset-2 col-lg-2">
+    <div class="col-md-offset-2 col-md-2">
       <%= link_to '編集', edit_admin_product_path(@product.id),
         class: 'btn btn-default' if show? %>
       <%= f.submit '更新', class: 'btn btn-primary' if edit? %>
