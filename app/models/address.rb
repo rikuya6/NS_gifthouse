@@ -12,6 +12,7 @@
 
 class Address < ActiveRecord::Base
 
+
   # 関連
   belongs_to :order
 

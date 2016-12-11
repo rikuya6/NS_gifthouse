@@ -28,6 +28,7 @@ class Admin::UsersController < Admin::Base
   private
 
   def user_params
-    params.require(:user).permit(:email, :administrator, :password, :password_confirmation)
+    attrs = [:email, :administrator, :password, :password_confirmation]
+    params.require(:user).permit(attrs)
   end
 end

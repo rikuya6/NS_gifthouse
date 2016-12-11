@@ -10,8 +10,10 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'products#index'
     resources :products
-    resources :users
-    resources :orders
+    resources :users do
+      resources :orders
+    end
+    resources :orders, only: [:index]
   end
 
   match '*anything' => 'top#not_found', via: [:get, :post, :patch, :delete]

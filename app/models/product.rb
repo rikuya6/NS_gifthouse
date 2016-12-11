@@ -17,7 +17,7 @@ class Product < ActiveRecord::Base
   # 関連
   has_many :product_categories, dependent: :destroy
   has_many :categories, through: :product_categories
-  has_many :ordersp
+  has_many :orders, dependent: :destroy
 
 
   # バリデーション

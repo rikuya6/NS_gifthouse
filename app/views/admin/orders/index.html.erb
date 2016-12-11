@@ -1,7 +1,8 @@
-<% @page_title = '管理画面：注文一覧' %>
+<% title = params[:user_id].present? ? 'ユーザID' + params[:user_id] + 'の注文一覧' : '注文一覧' %>
+<% @page_title = '管理画面：' + title %>
 
 <div class="page-header">
-  <h1>注文一覧</h1>
+  <h1><%= title %></h1>
 </div>
 
 <% if @orders.present? %>
@@ -12,6 +13,7 @@
         <th class="text-center">ユーザID</th>
         <th class="text-center">商品名</th>
         <th class="text-center">ラッピング</th>
+        <th class="text-center">届け先</th>
         <th class="text-center"></th>
       </tr>
     </thead>
@@ -19,12 +21,17 @@
       <% @orders.each do |order| %>
       <tr>
         <td class="col-md-2"><%= order.user_id %></td>
-        <td class="col-md-5"><%= order.product_name %></td>
-        <td class="col-md-3"><%= order.wrapping_name %></td>
+        <td class="col-md-4"><%= order.product_name %></td>
+        <td class="col-md-2"><%= order.wrapping_name %></td>
+        <td class="col-md-2">
+          <% order.addresses.each do |address| %>
+            <%= address.dest %>
+          <% end %>
+        </td>
         <td class="text-center col-md-2">
-          <%= link_to '詳細', admin_order_path(order.id), class: 'btn btn-info btn-xs',
+          <%= link_to '詳細', admin_user_order_path(order.user_id, order.id), class: 'btn btn-info btn-xs',
             style: 'width: 4em' %>
-          <%= link_to '削除', admin_order_path(order.id), method: :delete, class: 'btn btn-xs btn-danger',
+          <%= link_to '削除', admin_user_order_path(order.user_id, order.id), method: :delete, class: 'btn btn-xs btn-danger',
             style: 'width: 4em;', data: { disable_with: '削除中'} %>
         </td>
       </tr>
