@@ -14,5 +14,14 @@ class Admin::OrdersController < Admin::Base
     @order = @user.orders.find(params[:id])
   end
 
-
+  def destroy
+    @order = Order.find(params[:id])
+    @order.destroy
+    flash[:notice] = '注文を削除しました。'
+    if params[:user_id].present?
+      redirect_to admin_user_orders_path(params[:user_id])
+    else
+      redirect_to admin_orders_path
+    end
+  end
 end

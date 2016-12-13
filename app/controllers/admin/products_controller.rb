@@ -15,7 +15,7 @@ class Admin::ProductsController < Admin::Base
   def create
     @product = Product.new(product_params)
     if @product.save
-      redirect_to [:admin, @product]
+      redirect_to [:admin, @product], notice: '商品を新規登録しました。'
     else
       render 'new'
     end
@@ -50,6 +50,7 @@ class Admin::ProductsController < Admin::Base
 
   def product_params
     attrs = [:name, :price, :weight, :stock, :note]
+    attrs << [:confirm]
     attrs << { categories_attributes: [:id, :name] }
     attrs << { category_ids: [] }
     params.require(:product).permit(attrs)

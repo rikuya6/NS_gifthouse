@@ -14,7 +14,7 @@ module ApplicationHelper
     action_name == 'edit'
   end
 
-  def new?
-    action_name == 'new'
+  def new_or_create?
+    (action_name == 'new') || (action_name == 'create')
   end
 end
