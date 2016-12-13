@@ -9,12 +9,15 @@ class Admin::ProductsController < Admin::Base
   end
 
   def new
-    @product = Product.new
+      @product = Product.new
   end
 
   def create
     @product = Product.new(product_params)
-    if @product.save
+    if params[:back].present?
+      @product.confirm = nil
+      render 'new'
+    elsif @product.save
       redirect_to [:admin, @product], notice: '商品を新規登録しました。'
     else
       render 'new'
@@ -28,11 +31,10 @@ class Admin::ProductsController < Admin::Base
   def update
     @product = Product.find(params[:id])
     @product.assign_attributes(product_params)
-
-    # @cateory = Category.find(params[:id])
-    # @product.product_categories << @category
-
-    if @product.save
+    if params[:back].present?
+      @product.confirm = nil
+      render 'edit'
+    elsif @product.save
       redirect_to [:admin, @product], notice: '商品を更新しました。'
     else
       render 'edit'

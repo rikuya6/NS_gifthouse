@@ -62,6 +62,6 @@ class Product < ActiveRecord::Base
 
   def check_confirm
     errors.delete(:confirm)
-    self.confirm = errors.empty? ? '1' : ''
+    self.confirm = errors.empty? ? '1' : nil
   end
 end

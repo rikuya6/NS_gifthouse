@@ -10,8 +10,8 @@ module ApplicationHelper
     action_name == 'show'
   end
 
-  def edit?
-    action_name == 'edit'
+  def edit_or_update?
+    (action_name == 'edit' || action_name == 'update')
   end
 
   def new_or_create?
