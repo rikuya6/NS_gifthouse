@@ -19,15 +19,11 @@ class ApplicationController < ActionController::Base
 
   # プライベートメソッド
   private
-  
+
   def debug(object)
     Rails.logger.debug '*' * 50
     Rails.logger.debug object
     Rails.logger.debug '*' * 50
-  end
-
-  def login_required
-    raise Forbidden unless current_member
   end
 
   def rescue_400(exception)
@@ -50,4 +46,5 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
   end
   helper_method :current_user
+
 end

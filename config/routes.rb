@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   resource :sessions, only: [:create, :destroy], as: 'login', path: 'login'
   delete 'logout' => 'sessions#destroy', as: 'logout'
 
-  resources :users
+  resources :users do
+    resources :orders, only: [:index]
+  end
   resources :products
 
   namespace :admin do
