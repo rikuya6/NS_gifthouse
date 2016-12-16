@@ -30,7 +30,6 @@ class Order < ActiveRecord::Base
   def product_stock; product.stock end
   def product_note; product.note end
   def wrapping_name; wrapping.try(:name) end
-  def address_name; addresses.dest end
 
   # バリデーション
 end

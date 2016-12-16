@@ -19,6 +19,7 @@ ja:
         weight: '重さ'
         stock: '在庫数'
         note: '商品説明'
+        created_at: '注文日時'
       category:
         name: 'カテゴリ名'
       wrapping:
