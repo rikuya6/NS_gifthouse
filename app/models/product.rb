@@ -14,9 +14,6 @@
 
 class Product < ActiveRecord::Base
 
-  after_validation :check_confirm
-
-
   # 関連
   has_many :product_categories, dependent: :destroy
   has_many :categories, through: :product_categories
@@ -56,12 +53,4 @@ class Product < ActiveRecord::Base
                           allow_blank: true,
                         }
 
-  validates_acceptance_of :confirm
-
-  private
-
-  def check_confirm
-    errors.delete(:confirm)
-    self.confirm = errors.empty? ? '1' : nil
-  end
 end

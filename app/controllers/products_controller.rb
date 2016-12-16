@@ -1,4 +1,4 @@
-class ProductsController < ApplicationController
+class ProductsController < GuestController
 
   def index
     one = Product.includes(:categories)

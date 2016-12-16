@@ -1,2 +1,2 @@
-class BoxesController < ApplicationController
+class BoxesController < MemberController
 end

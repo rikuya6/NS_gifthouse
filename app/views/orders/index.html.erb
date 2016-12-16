@@ -1,0 +1,41 @@
+<% @page_title = '注文一覧' %>
+
+<div class="page-header">
+  <h1>注文一覧</h1>
+</div>
+
+<% if @orders.present? %>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th class="text-center">注文日</th>
+        <th class="text-center">価格</th>
+        <th class="text-center">重さ</th>
+        <th class="text-center">商品説明</th>
+        <th class="text-center">カテゴリ</th>
+        <th class="text-center">在庫状況</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @orders.each do |order| %>
+      <tr>
+        <td class="col-md-3"><%= order.created_at %></td>
+        <td class="text-right col-md-1"><%= number_with_delimiter(order.product_name) %></td>
+        <td class="text-right col-md-1"><%= number_with_delimiter(order.product_price) %></td>
+        <td class="text-right col-md-1"><%= order.product_weight %></td>
+        <td class="col-md-4"><%= order.product_note %></td>
+        <td class="col-md-2">
+          <% order.product.categories.each do |categories| %>
+            <%= categories.name %>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<%= paginate @orders %>
+<% else %>
+  <% flash.now[:info] = 'まだ注文を承っておりません。' %>
+<% end %>

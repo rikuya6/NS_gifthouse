@@ -25,6 +25,10 @@ class Order < ActiveRecord::Base
 
   # 委譲メソッド
   def product_name; product.name end
+  def product_price; product.price end
+  def product_weight; product.weight end
+  def product_stock; product.stock end
+  def product_note; product.note end
   def wrapping_name; wrapping.try(:name) end
   def address_name; addresses.dest end
 

@@ -11,7 +11,14 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: 'products#index'
-    resources :products
+    resources :products do
+      member do
+        patch 'edit/confirmation' => 'products#edit_confirmation'
+      end
+      collection do
+        post 'new/confirmation'  => 'products#new_confirmation'
+      end
+    end
     resources :users do
       resources :orders
     end

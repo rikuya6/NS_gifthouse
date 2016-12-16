@@ -17,4 +17,12 @@ module ApplicationHelper
   def new_or_create?
     (action_name == 'new') || (action_name == 'create')
   end
+
+  def new_confirmation?
+    action_name == 'new_confirmation'
+  end
+
+  def edit_confirmation?
+    action_name == 'edit_confirmation'
+  end
 end

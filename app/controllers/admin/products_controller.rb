@@ -9,13 +9,12 @@ class Admin::ProductsController < Admin::Base
   end
 
   def new
-      @product = Product.new
+    @product = Product.new
   end
 
   def create
     @product = Product.new(product_params)
     if params[:back].present?
-      @product.confirm = nil
       render 'new'
     elsif @product.save
       redirect_to [:admin, @product], notice: '商品を新規登録しました。'
@@ -32,7 +31,6 @@ class Admin::ProductsController < Admin::Base
     @product = Product.find(params[:id])
     @product.assign_attributes(product_params)
     if params[:back].present?
-      @product.confirm = nil
       render 'edit'
     elsif @product.save
       redirect_to [:admin, @product], notice: '商品を更新しました。'
@@ -45,6 +43,17 @@ class Admin::ProductsController < Admin::Base
     @product = Product.find(params[:id])
     @product.destroy
     redirect_to admin_products_path, notice: '商品を削除しました。'
+  end
+
+  def new_confirmation
+    @product = Product.new(product_params)
+    render 'new' if @product.invalid?
+  end
+
+  def edit_confirmation
+    @product = Product.find(params[:id])
+    @product.assign_attributes(product_params)
+    render 'edit' if @product.invalid?
   end
 
 
