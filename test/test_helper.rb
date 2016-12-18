@@ -8,5 +8,9 @@ class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
 
-  # Add more helper methods to be used by all tests here...
+  # アップロードしたファイル
+  def uploaded_file(fname, type)
+    Rack::Test::UploadedFile.new(
+      Rails.root.join('test/factories', fname), type, true)
+  end
 end

@@ -4,9 +4,11 @@ class Admin::UsersController < Admin::Base
     @users = User.order(administrator: :DESC, id: :asc).page(params[:page])
   end
 
-
   def edit
     @user = User.find(params[:id])
+  end
+
+  def create
   end
 
   def update

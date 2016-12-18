@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   validates :email,       presence: true,
                           uniqueness: { case_sensitive: false }
 
-  validates :password,    presence: true,
+  validates :password,    presence: { on: :create, },
                           length: {
                             allow_blank: true,
                             minimum: 6,
@@ -35,9 +35,6 @@ class User < ActiveRecord::Base
 
 
   # メソッド
-
-
-  # クラスメソッド
   has_secure_password
 
 

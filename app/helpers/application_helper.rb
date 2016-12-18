@@ -33,4 +33,13 @@ module ApplicationHelper
     time = "#{object.created_at.hour}時#{object.created_at.min}分"
     year + month + day + time
   end
+
+  def admin_product_image_tag(product, opts = {})
+    if product.image.present?
+      path = admin_product_path(product, format: product.extension)
+      link_to(image_tag(path, { alt: product.name }.merge(opts)), path)
+    else
+      ''
+    end
+  end
 end

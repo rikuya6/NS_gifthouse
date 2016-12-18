@@ -20,7 +20,7 @@ class Order < ActiveRecord::Base
 
   accepts_nested_attributes_for :product
   accepts_nested_attributes_for :wrapping
-  accepts_nested_attributes_for :addresses
+  accepts_nested_attributes_for :addresses, allow_destroy: true 
 
 
   # 委譲メソッド

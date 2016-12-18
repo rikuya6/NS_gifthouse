@@ -9,7 +9,7 @@
     </div>
 
     <div class="form-group">
-      <%= ff.label '請求金額', class: 'control-label col-md-12' %>
+      <%= ff.label 'ご請求金額', class: 'control-label col-md-12' %>
       <div class="col-md-12">
         <%= ff.number_field :price, class: 'form-control', disabled: true %>
       </div>
@@ -17,16 +17,16 @@
 
     <%= f.fields_for :addresses do |ff| %>
       <div class="form-group">
-        <%= ff.label :dest, class: 'control-label col-md-12' %>
-        <div class="col-md-12">
-          <%= ff.text_field :dest, class: 'form-control', disabled: true %>
-        </div>
-      </div>
-      <div class="form-group">
         <%= ff.label :zipcode, class: 'control-label col-md-12' %>
         <div class="col-md-2">
           <span>〒</span>
           <%= ff.text_field :zipcode, class: 'form-control', disabled: true %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= ff.label :dest, class: 'control-label col-md-12' %>
+        <div class="col-md-12">
+          <%= ff.text_field :dest, class: 'form-control', disabled: true %>
         </div>
       </div>
     <% end %>

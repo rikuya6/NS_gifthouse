@@ -16,6 +16,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'rails-i18n'
 gem 'kaminari'
 gem 'puma'
+gem 'nested_form_fields'
 
 group :test do
   gem 'factory_girl_rails'

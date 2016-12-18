@@ -15,27 +15,10 @@
         <%= ff.text_field :name, class: 'form-control', disabled: true %>
       </div>
     </div>
-
     <div class="form-group">
-      <%= ff.label '請求金額', class: 'control-label col-md-12' %>
+      <%= ff.label :price, class: 'control-label col-md-12' %>
       <div class="col-md-2">
         <%= ff.number_field :price, class: 'form-control', disabled: true %>
-      </div>
-    </div>
-  <% end %>
-
-  <%= f.fields_for :addresses do |ff| %>
-    <div class="form-group">
-      <%= ff.label :dest, class: 'control-label col-md-12' %>
-      <div class="col-md-12">
-        <%= ff.text_field :dest, class: 'form-control' %>
-      </div>
-    </div>
-    <div class="form-group">
-      <%= ff.label :zipcode, class: 'control-label col-md-12' %>
-      <div class="col-md-2">
-        <span>〒</span>
-        <%= ff.text_field :zipcode, class: 'form-control' %>
       </div>
     </div>
   <% end %>
@@ -45,11 +28,29 @@
       <%= ff.label :name, class: 'control-label col-md-12' %>
       <div class="col-md-12">
         <div class="bootstrap-select">
-          <%= f.collection_select :wrapping_id, Wrapping.all, :id, :name, {}, class: 'selectpicker show-tick show-menu-arrow' %>
+          <%= f.collection_select :wrapping_id, Wrapping.all, :id, :name, {include_blank: true	}, class: 'selectpicker show-tick show-menu-arrow' %>
         </div>
       </div>
     </div>
   <% end %>
+
+  <%= f.nested_fields_for :addresses, wrapper_options: { class: 'col-md-12' } do |ff| %>
+    <%= ff.remove_nested_fields_link '×', data: { confirm: 'この配達先を削除してよろしいですか?' },  class: 'btn btn-danger btn-xs' %>
+    <div class="form-group">
+      <%= ff.label :zipcode, class: 'control-label col-md-12' %>
+      <div class="col-md-2">
+        <%= ff.text_field :zipcode, placeholder: '〒 123-3456', class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= ff.label :dest, class: 'control-label col-md-12' %>
+      <div class="col-md-12">
+        <%= ff.text_field :dest, class: 'form-control' %>
+      </div>
+    </div>
+  <% end %>
+  <%= f.add_nested_fields_link :addresses, '送り先を追加', class: 'col-md-offset-11 col-md-1 btn btn-info btn-sm' %>
+
   <div class="form-group">
     <div class="col-md-offset-10 col-md-2">
       <%= link_to '編集', edit_admin_product_path(@product.id),
