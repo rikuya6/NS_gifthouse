@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :show]
   end
   resources :products
+  resource :orders
 
   namespace :admin do
     root to: 'products#index'

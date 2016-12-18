@@ -15,6 +15,7 @@
         <th class="text-center">重さ</th>
         <th class="text-center">商品説明</th>
         <th class="text-center">カテゴリ</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -24,12 +25,13 @@
         <td class="text-right col-md-1"><%= number_with_delimiter(product.stock) %></td>
         <td class="text-right col-md-1"><%= number_with_delimiter(product.price) %></td>
         <td class="text-right col-md-1"><%= product.weight %></td>
-        <td class="col-md-4"><%= product.note %></td>
+        <td class="col-md-3"><%= product.note %></td>
         <td class="col-md-2">
           <% product.categories.each do |categories| %>
             <%= categories.name %>
           <% end %>
         </td>
+        <td class="col-md-1"><%= link_to '注文', new_orders_path(product_id: product.id), class: 'btn btn-info' %></td>
       </tr>
       <% end %>
     </tbody>

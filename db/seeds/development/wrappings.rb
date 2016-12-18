@@ -1,4 +1,4 @@
-1.upto(10) do |idx|
+1.upto(3) do |idx|
   Wrapping.create!(
     name: "ラッピング#{idx}"
   )
