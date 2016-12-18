@@ -31,7 +31,11 @@
             <%= categories.name %>
           <% end %>
         </td>
-        <td class="col-md-1"><%= link_to '注文', new_orders_path(product_id: product.id), class: 'btn btn-info' %></td>
+        <td class="text-center col-md-1">
+          <%= link_to new_orders_path(product_id: product.id), class: 'btn btn-info' do %>
+            <i class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></i>注文
+          <% end %>
+        </td>
       </tr>
       <% end %>
     </tbody>

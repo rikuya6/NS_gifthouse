@@ -11,7 +11,7 @@ User.create!(
   password_confirmation: 'password'
 )
 
-1.upto(20) do |idx|
+1.upto(10) do |idx|
   User.create(
     email: Faker::Internet.safe_email(Faker::Internet.user_name(Faker::StarWars.character, %w(. _ -))),
     password: 'password',

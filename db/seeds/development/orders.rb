@@ -11,8 +11,8 @@ users.each do |user|
     dest += Faker::Address.street_name
     dest += Faker::Address.street_name
     order.addresses.create!(
-      dest: "ユーザID:#{user.id} " + dest,
-      zipcode: "ユーザID:#{user.id} " + Faker::Address.zip_code
+      dest: dest,
+      zipcode: Faker::Address.zip_code
     )
   end
 end

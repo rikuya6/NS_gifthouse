@@ -1,4 +1,6 @@
-class UsersController < ApplicationController
+class UsersController < MemberController
+  before_action :login_required, only: [:edit, :update]
+  before_action :user_authorization, only: [:edit, :update]
 
   def new
     @user = User.new

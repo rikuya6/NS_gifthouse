@@ -7,4 +7,10 @@ class MemberController < ApplicationController
   def login_required
     redirect_to :root, notice: 'ログインしてください。' unless current_user
   end
+
+  def user_authorization
+    @user = User.find_by(id: params[:user_id])
+    @user ||= User.find_by(id: params[:id]) if @user.nil?
+    redirect_to :root unless @user == current_user
+  end
 end

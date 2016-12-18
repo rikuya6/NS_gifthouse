@@ -14,6 +14,9 @@
 class User < ActiveRecord::Base
   include EmailAddressChecker
 
+  before_save { email.downcase! }
+
+
   # 関連
   has_many :orders
 
@@ -21,8 +24,14 @@ class User < ActiveRecord::Base
   # バリデーション
   validate  :check_email
 
-  validates :email, presence: true,
-                    uniqueness: true
+  validates :email,       presence: true,
+                          uniqueness: { case_sensitive: false }
+
+  validates :password,    presence: true,
+                          length: {
+                            allow_blank: true,
+                            minimum: 6,
+                          }
 
 
   # メソッド

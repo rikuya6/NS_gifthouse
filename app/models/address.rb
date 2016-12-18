@@ -18,7 +18,11 @@ class Address < ActiveRecord::Base
 
 
   # バリデーション
-  validates :dest,    presence: true
+  validates :dest,      presence: true
 
-  validates :zipcode, presence: true
+  validates :zipcode,   presence: true,
+                        format: {
+                          allow_blank: true,
+                          with: /\A\d{3}[-]\d{4}/,
+                        }
 end

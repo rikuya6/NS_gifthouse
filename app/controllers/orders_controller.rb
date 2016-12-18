@@ -1,4 +1,5 @@
 class OrdersController < MemberController
+  before_action :user_authorization, only: [:show]
 
   def index
     @orders = Order.includes(:product, :wrapping, :addresses)
