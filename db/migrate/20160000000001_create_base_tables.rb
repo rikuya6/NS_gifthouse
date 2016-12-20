@@ -5,7 +5,6 @@ class CreateBaseTables < ActiveRecord::Migration
       t.string  :email,            null: false
       t.boolean :administrator,    null: false, default: false
       t.string  :password_digest,  null: false
-      t.string  :image
 
       t.timestamps null: false
     end

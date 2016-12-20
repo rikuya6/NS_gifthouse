@@ -5,7 +5,7 @@ class Admin::OrdersController < Admin::Base
       @user = User.find(params[:user_id])
       @orders = @user.orders.includes(:product, :wrapping, :addresses).page(params[:page])
     else
-      @orders = Order.includes(:product, :wrapping, :addresses).page(params[:page])
+      @orders = Order.includes(:user, :product, :wrapping, :addresses).page(params[:page])
     end
   end
 

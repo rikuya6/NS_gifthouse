@@ -6,6 +6,6 @@ class ProductsController < GuestController
       keyword = params[:keyword]
       one = one.where('products.name like ?', '%' + keyword + '%')
     end
-    @products = one.page(params[:page])
+    @products = one.page(params[:page]).per(16)
   end
 end

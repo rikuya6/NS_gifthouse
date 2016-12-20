@@ -42,4 +42,8 @@ module ApplicationHelper
       ''
     end
   end
+
+  def tag_label(product)
+    product.categories.map{|tag| "<span class=#{'"label label-primary"'}>#{tag.name}</span>" }.join(' ').html_safe
+  end
 end

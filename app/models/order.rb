@@ -18,9 +18,11 @@ class Order < ActiveRecord::Base
   belongs_to :wrapping
   has_many :addresses, dependent: :destroy
 
+
+  accepts_nested_attributes_for :user
   accepts_nested_attributes_for :product
   accepts_nested_attributes_for :wrapping
-  accepts_nested_attributes_for :addresses, allow_destroy: true 
+  accepts_nested_attributes_for :addresses, allow_destroy: true
 
 
   # 委譲メソッド
@@ -30,6 +32,7 @@ class Order < ActiveRecord::Base
   def product_stock; product.stock end
   def product_note; product.note end
   def wrapping_name; wrapping.try(:name) end
+  def user_email; user.email end
 
   # バリデーション
 end

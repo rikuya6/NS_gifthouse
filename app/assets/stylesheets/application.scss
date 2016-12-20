@@ -1,12 +1,13 @@
 @import "bootstrap-sprockets";
-@import "bootstrap";
+//@import "bootstrap";
 @import "bootstrap-select";
+@import "honoka";
 
-$font: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', '游ゴシック  Medium', meiryo, sans-serif;
+//$font: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', '游ゴシック  Medium', meiryo, sans-serif;
 
-body{
-  font-family: $font;
-}
+// body{
+//   font-family: $font;
+// }
 
 $gray-border: #bdc3c7;
 $gray-link: #7f8c8d;
@@ -70,4 +71,9 @@ table {
 
 .add_nested_fields_link{
   margin-bottom: 10px;
+}
+
+.panel-height {
+  display: flex;
+  flex-wrap: wrap;
 }
