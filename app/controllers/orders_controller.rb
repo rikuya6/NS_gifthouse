@@ -15,13 +15,13 @@ class OrdersController < MemberController
     @order = current_user.orders.build(product_id: params[:product_id])
     @order.addresses.build
     @order.build_wrapping
+    @wrapping = Wrapping.all.pluck(:name, :id)
   end
 
   def create
-    debug params
     @order = current_user.orders.build(order_params)
+    @wrapping = Wrapping.all.pluck(:name, :id)
     #return render 'new' unless @order.addresses.present?
-
     if params[:back].present?
       render 'new'
     elsif @order.save
@@ -39,7 +39,6 @@ class OrdersController < MemberController
     attrs << [:confirm]
     attrs << { product_attributes: [:id, :name, :price, :weight, :stock, :note] }
     attrs << { addresses_attributes: [:id, :order_id, :dest, :zipcode, :_destroy] }
-    attrs << { wrapping_attributes: [:id, :name] }
     params.require(:order).permit(attrs)
   end
 end

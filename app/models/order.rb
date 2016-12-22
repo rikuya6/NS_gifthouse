@@ -18,7 +18,6 @@ class Order < ActiveRecord::Base
   belongs_to :wrapping
   has_many :addresses, dependent: :destroy
 
-
   accepts_nested_attributes_for :user
   accepts_nested_attributes_for :product
   accepts_nested_attributes_for :wrapping
@@ -34,5 +33,11 @@ class Order < ActiveRecord::Base
   def wrapping_name; wrapping.try(:name) end
   def user_email; user.email end
 
+
   # バリデーション
+  validates :product_id,  presence: true
+
+  validates :user_id,     presence: true
+
+  validates :wrapping_id, presence: true
 end

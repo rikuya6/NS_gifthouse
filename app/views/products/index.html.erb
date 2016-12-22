@@ -7,14 +7,14 @@
 <% if @products.present? %>
 <div class="panel-height">
   <% @products.each do |product| %>
-  <div class="panel panel-default col-md-3">
+  <div class="panel panel-info col-md-6 ">
     <div class="panel-heading">
-      <h3 class="panel-title"><%= product.name %></h3>
+      <h3 class="panel-title"><%= link_to product.name, product_path(product) %></h3>
     </div>
     <div class="panel-body">
       <ul class="list-group">
-        <li class="list-group-item">価格<%= product.price %></li>
-        <li class="list-group-item">重さ<%= product.weight %></li>
+        <li class="list-group-item">¥<%= number_with_delimiter(product.price) %></li>
+        <li class="list-group-item">重さ<%= number_with_delimiter(product.weight) %></li>
         <li class="list-group-item"><%= product.note %></li>
         <li class="list-group-item"><%= tag_label(product) %></li>
       </ul>

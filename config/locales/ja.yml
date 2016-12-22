@@ -14,6 +14,7 @@ ja:
         administrator: '管理者'
         password: 'パスワード'
         password_confirmation: 'パスワードの確認'
+        orders: '届け先'
       product:
         name: '商品名'
         price: '価格'
@@ -32,12 +33,17 @@ ja:
       addresses:
         dest: '届け先'
         zipcode: '郵便番号'
+      order:
+        wrapping_id: 'ラッピング'
     errors:
       messages:
         invalid: 'の入力形式が異なります。例)123-4567'
         expired_at_too_old: 'は掲載開始日より新しい日時にしてください。'
         too_big_image: 'が大きすぎます(最大64KB)。'
         invalid_image: 'の形式が違います(JPEG, GIF, PNGのいずれかにしてください)。'
+      models:
+        order:
+          blank: 'を選択してください。'
   views:
     pagination:
       first: '&laquo;'

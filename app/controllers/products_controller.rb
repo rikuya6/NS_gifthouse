@@ -8,4 +8,8 @@ class ProductsController < GuestController
     end
     @products = one.page(params[:page]).per(16)
   end
+
+  def show
+    @product = Product.find(params[:id])
+  end
 end

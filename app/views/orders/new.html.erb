@@ -23,16 +23,11 @@
     </div>
   <% end %>
 
-  <%= f.fields_for :wrapping do |ff| %>
-    <div class="form-group">
-      <%= ff.label :name, class: 'control-label col-md-12' %>
-      <div class="col-md-12">
-        <div class="bootstrap-select">
-          <%= f.collection_select :wrapping_id, Wrapping.all, :id, :name, {include_blank: true	}, class: 'selectpicker show-tick show-menu-arrow' %>
-        </div>
-      </div>
+  <div class="form-group">
+    <div class="col-md-12">
+      <%= f.select :wrapping_id, @wrapping, {prompt: true}, class: 'selectpicker show-tick show-menu-arrow' %>
     </div>
-  <% end %>
+  </div>
 
   <%= f.nested_fields_for :addresses, wrapper_options: { class: 'col-md-12' } do |ff| %>
     <%= ff.remove_nested_fields_link '×', data: { confirm: 'この配達先を削除してよろしいですか?' },  class: 'btn btn-danger btn-xs' %>
