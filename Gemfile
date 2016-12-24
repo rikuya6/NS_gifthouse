@@ -17,6 +17,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'rails-i18n'
 gem 'kaminari'
 gem 'puma'
+gem 'carrierwave'
+gem 'mini_magick'
 # gem 'mysql2'
 
 group :test do

@@ -1,4 +1,11 @@
 <div class="form-group">
+  <%= f.label :image, class: 'control-label col-md-12'  %>
+  <div class="col-md-12">
+    <%= image_tag(@product.image.url) %>
+  </div>
+</div>
+
+<div class="form-group">
   <%= f.label :name, class: 'control-label col-md-2' %>
   <div class="col-md-12">
     <%= f.text_field :name, class: 'form-control', disabled: show? %>
@@ -29,20 +36,6 @@
   <%= f.label :note, class: 'control-label col-md-2' %>
   <div class="col-md-12">
     <%= f.text_area :note, class: 'form-control', disabled: show? %>
-  </div>
-</div>
-
-<div class="form-group">
-  <%= f.label :uploaded_image, class: 'control-label col-md-2' %>
-  <div class="col-md-12">
-    <%= f.file_field :uploaded_image %>
-    <% if !f.object.new_record? && f.object.errors.empty? %>
-    <div>
-      <%= admin_product_image_tag @product, width: 300 %>
-      <%= f.check_box :_destroy, disabled: show? %>
-      <%= f.label :_destroy %>
-    </div>
-    <% end %>
   </div>
 </div>
 

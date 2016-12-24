@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 20160000000001) do
     t.integer  "weight",       null: false
     t.integer  "stock",        null: false
     t.text     "note",         null: false
-    t.binary   "image"
+    t.string   "image"
     t.string   "content_type"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false

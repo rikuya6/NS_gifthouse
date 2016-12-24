@@ -8,20 +8,14 @@
 #  weight       :integer          not null
 #  stock        :integer          not null
 #  note         :text             not null
-#  image        :binary
+#  image        :string
 #  content_type :string
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #
 
 class Product < ActiveRecord::Base
-
-  # 定数
-  IMAGE_TYPES = { 'image/jpeg' => 'jpg', 'image/gif' => 'gif', 'image/png' => 'png' }
-
-
-  # アクセサ
-  attr_reader :uploaded_image
+  mount_uploader :image, ImageUploader
 
 
   # 関連
@@ -66,38 +60,13 @@ class Product < ActiveRecord::Base
   validate :check_image
 
 
-  # メソッド
-  def uploaded_image=(image)
-    self.content_type = convert_content_type(image.content_type)
-    self.image = image.read
-    @uploaded_image = image
-  end
-
-  def extension
-    IMAGE_TYPES[content_type]
-  end
-
-
   # プライベートメソッド
   private
 
-  def convert_content_type(ctype)
-    ctype = ctype.rstrip.downcase
-    case ctype
-      when 'image/pjpeg'  then 'image/jpeg'
-      when 'image/jpg'    then 'image/jpeg'
-      when 'image/x-png'  then 'image/png'
-      else ctype
-    end
-  end
-
   def check_image
-    if @uploaded_image
-      if image.size > 64.kilobytes
-        errors.add(:uploaded_image, :too_big_image)
-      end
-      unless IMAGE_TYPES.has_key?(content_type)
-        errors.add(:uploaded_image, :invalid_image)
+    if self.image
+      if self.image.size > 10.megabytes
+        errors.add(:image, :too_big_image)
       end
     end
   end

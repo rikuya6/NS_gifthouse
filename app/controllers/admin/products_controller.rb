@@ -6,7 +6,7 @@ class Admin::ProductsController < Admin::Base
 
   def show
     @product = Product.find(params[:id])
-    return send_image if params[:format].in?(['jpg', 'png', 'gif'])
+    #return send_image if params[:format].in?(['jpg', 'png', 'gif'])
     render 'show'
   end
 
@@ -32,7 +32,9 @@ class Admin::ProductsController < Admin::Base
   def update
     @product = Product.find(params[:id])
     @product.assign_attributes(product_params)
+    #binding.pry
     if params[:back].present?
+      @product.image.move_to_cache
       render 'edit'
     elsif @product.save
       redirect_to [:admin, @product], notice: '商品を更新しました。'
@@ -61,17 +63,17 @@ class Admin::ProductsController < Admin::Base
 
   private
 
-  def send_image
-    if @product.image.present?
-      send_data @product.image,
-        type: @product.content_type, disposition: 'inline'
-    else
-      raise NotFound
-    end
-  end
+  # def send_image
+  #   if @product.image.present?
+  #     send_data @product.image,
+  #       type: @product.content_type, disposition: 'inline'
+  #   else
+  #     raise NotFound
+  #   end
+  # end
 
   def product_params
-    attrs = [:name, :price, :weight, :stock, :note]
+    attrs = [:name, :price, :weight, :stock, :note, :image, :image_cache]
     attrs << [:confirm]
     attrs << { categories_attributes: [:id, :name] }
     attrs << { category_ids: [] }

@@ -35,7 +35,7 @@ class CreateBaseTables < ActiveRecord::Migration
       t.integer   :weight,  null: false
       t.integer   :stock,   null: false
       t.text      :note,    null: false
-      t.binary    :image
+      t.string    :image
       t.string    :content_type
 
       t.timestamps null: false

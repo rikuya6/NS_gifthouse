@@ -4,7 +4,7 @@
 <%= f.hidden_field :weight %>
 <%= f.hidden_field :stock %>
 <%= f.hidden_field :note %>
-<%= f.hidden_field :_destroy %>
+<%= f.hidden_field :image_cache %>
 <% @product.category_ids.each do |id| %>
   <%= hidden_field_tag 'product[category_ids][]', id %>
 <% end %>
@@ -12,50 +12,44 @@
 <h2>登録確認ページ</h2>
 
 <div>
-  <%= f.label :name, class: 'col-md-2' %>
+  <%= f.label :name, class: 'col-md-12' %>
   <div class="col-md-12">
     <%= @product.name %>
   </div>
 </div>
 <div>
-  <%= f.label :price, class: 'col-md-2' %>
+  <%= f.label :price, class: 'col-md-12' %>
   <div class="col-md-12">
     <%= @product.price %>
   </div>
 </div>
 <div>
-  <%= f.label :weight, class: 'col-md-2' %>
+  <%= f.label :weight, class: 'col-md-12' %>
   <div class="col-md-12">
     <%= @product.weight %>
   </div>
 </div>
 <div>
-  <%= f.label :stock, class: 'col-md-2' %>
+  <%= f.label :stock, class: 'col-md-12' %>
   <div class="col-md-12">
     <%= @product.stock %>
   </div>
 </div>
 <div>
-  <%= f.label :note, class: 'col-md-2' %>
+  <%= f.label :note, class: 'col-md-12' %>
   <div class="col-md-12">
     <%= @product.note %>
   </div>
 </div>
 <div class="form-group">
-  <%= f.label :uploaded_image, class: 'control-label col-md-2' %>
-  <div class="col-md-12">
-    <%= f.file_field :uploaded_image %>
-    <% if !f.object.new_record? && f.object.errors.empty? %>
-    <div>
-      <%= admin_product_image_tag @product, width: 300 %>
-      <%= f.check_box :_destroy, disabled: show? %>
-      <%= f.label :_destroy %>
-    </div>
-    <% end %>
+  <%= f.label :image, class: 'control-label col-md-12'  %>
+  <div class="col-md-3">
+    <%= image_tag(@product.image.url) %>
+    <% f.file_field :image %>
   </div>
 </div>
 <div>
-  <b class="col-md-2">カテゴリ</b>
+  <label class="col-md-12">カテゴリ</label>
   <div class="col-md-12">
     <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |ff| %>
       <%= ff.label { ff.check_box(disabled: true) + ff.text } %>
