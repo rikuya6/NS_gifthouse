@@ -47,9 +47,9 @@ ActiveRecord::Schema.define(version: 20160000000001) do
     t.integer  "product_id",  null: false
     t.integer  "user_id",     null: false
     t.integer  "wrapping_id", null: false
-    t.string   "dest",        null: false
+    t.text     "dest",        null: false
     t.string   "zipcode",     null: false
-    t.integer  "payment",     null: false
+    t.string   "payment",     null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -65,15 +65,14 @@ ActiveRecord::Schema.define(version: 20160000000001) do
   add_index "product_categories", ["product_id"], name: "index_product_categories_on_product_id"
 
   create_table "products", force: :cascade do |t|
-    t.string   "name",         null: false
-    t.integer  "price",        null: false
-    t.integer  "weight",       null: false
-    t.integer  "stock",        null: false
-    t.text     "note",         null: false
+    t.string   "name",       null: false
+    t.integer  "price",      null: false
+    t.integer  "weight",     null: false
+    t.integer  "stock",      null: false
+    t.text     "note",       null: false
     t.string   "image"
-    t.string   "content_type"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -14,9 +14,9 @@ class CreateBaseTables < ActiveRecord::Migration
       t.integer :product_id,  null: false
       t.integer :user_id,     null: false
       t.integer :wrapping_id, null: false
-      t.string  :dest,        null: false
+      t.text    :dest,        null: false
       t.string  :zipcode,     null: false
-      t.integer :payment,     null: false
+      t.string  :payment,     null: false
 
       t.timestamps null: false
     end
@@ -36,7 +36,6 @@ class CreateBaseTables < ActiveRecord::Migration
       t.integer   :stock,   null: false
       t.text      :note,    null: false
       t.string    :image
-      t.string    :content_type
 
       t.timestamps null: false
     end
@@ -59,7 +58,7 @@ class CreateBaseTables < ActiveRecord::Migration
     # 箱
     create_table :boxes do |t|
       t.integer :capacity,  null: false
-      t.string  :box_type,      null: false
+      t.string  :box_type,  null: false
       t.integer :price,     null: false
 
       t.timestamps null: false

@@ -34,7 +34,6 @@ ja:
         payment: '支払い方法'
     errors:
       messages:
-        #invalid: 'の入力形式が異なります。例)123-4567'
         expired_at_too_old: 'は掲載開始日より新しい日時にしてください。'
         too_big_image: 'が大きすぎます(最大10MB)。'
         invalid_image: 'の形式が違います(JPEG, GIF, PNGのいずれかにしてください)。'
@@ -50,7 +49,6 @@ ja:
         mini_magick_processing_error: "Failed to manipulate with MiniMagick, maybe it is not an image? Original Error: %{e}"
         min_size_error: "File size should be greater than %{min_size}"
         max_size_error: "File size should be less than %{max_size}"
-      models:
   views:
     pagination:
       first: '&laquo;'
@@ -58,3 +56,17 @@ ja:
       previous: '&lsaquo;'
       next: '&rsaquo;'
       truncate: "..."
+  enumerize:
+    order:
+      payment:
+        cash: '現金払い'
+        credit: 'クレジット払い'
+        delivery: '代引き払い'
+  errors:
+    attributes:
+      payment:
+        blank: 'を選択してください'
+      wrapping_id:
+        blank: 'を選択してください'
+      zipcode:
+        invalid: 'の入力形式が異なります(例 123-4567)'

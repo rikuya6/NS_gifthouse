@@ -11,7 +11,7 @@ users.each do |user|
       wrapping_id: order_idx,
       dest: dest,
       zipcode: Faker::Address.zip_code,
-      payment: 1
+      payment: :cash
     )
   end
 end

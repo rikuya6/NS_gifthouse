@@ -6,14 +6,15 @@
 #  product_id  :integer          not null
 #  user_id     :integer          not null
 #  wrapping_id :integer          not null
-#  dest        :string           not null
+#  dest        :text             not null
 #  zipcode     :string           not null
-#  payment     :integer          not null
+#  payment     :string           not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
 
 class Order < ActiveRecord::Base
+  extend Enumerize
 
   # 関連
   belongs_to :user
@@ -23,6 +24,10 @@ class Order < ActiveRecord::Base
   accepts_nested_attributes_for :user
   accepts_nested_attributes_for :product
   accepts_nested_attributes_for :wrapping
+
+
+  # 定義
+  enumerize :payment, in: [:cash, :credit, :delivery]
 
 
   # 委譲メソッド
@@ -51,4 +56,5 @@ class Order < ActiveRecord::Base
                             allow_blank: true,
                             with: /\A\d{3}[-]\d{4}/,
                           }
+  validates :payment,     presence: true
 end

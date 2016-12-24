@@ -19,6 +19,7 @@ gem 'kaminari'
 gem 'puma'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'enumerize'
 # gem 'mysql2'
 
 group :test do
