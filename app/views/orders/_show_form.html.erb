@@ -15,21 +15,26 @@
       </div>
     </div>
 
-    <%= f.fields_for :addresses do |ff| %>
-      <div class="form-group">
-        <%= ff.label :zipcode, class: 'control-label col-md-12' %>
-        <div class="col-md-2">
-          <span>〒</span>
-          <%= ff.text_field :zipcode, class: 'form-control', disabled: true %>
-        </div>
+    <div class="form-group">
+      <%= f.label 'payment', class: 'control-label col-md-12' %>
+      <div class="col-md-12">
+        <%= f.number_field :payment, class: 'form-control', disabled: true %>
       </div>
-      <div class="form-group">
-        <%= ff.label :dest, class: 'control-label col-md-12' %>
-        <div class="col-md-12">
-          <%= ff.text_field :dest, class: 'form-control', disabled: true %>
-        </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :zipcode, class: 'control-label col-md-12' %>
+      <div class="col-md-2">
+        <span>〒</span>
+        <%= f.text_field :zipcode, class: 'form-control', disabled: true %>
       </div>
-    <% end %>
+    </div>
+    <div class="form-group">
+      <%= f.label :dest, class: 'control-label col-md-12' %>
+      <div class="col-md-12">
+        <%= f.text_field :dest, class: 'form-control', disabled: true %>
+      </div>
+    </div>
 
     <%= f.fields_for :wrapping do |ff| %>
       <div class="form-group">

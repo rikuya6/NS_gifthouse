@@ -6,8 +6,6 @@ ja:
       order: '注文'
       category: 'カテゴリ'
       wrapping: 'ラッピング'
-      address: 'アドレス'
-      addresses: 'アドレス'
     attributes:
       user:
         email: 'メールアドレス'
@@ -27,23 +25,20 @@ ja:
         name: 'カテゴリ名'
       wrapping:
         name: 'ラッピング名'
-      address:
-        dest: '届け先'
-        zipcode: '郵便番号'
-      addresses:
         dest: '届け先'
         zipcode: '郵便番号'
       order:
         wrapping_id: 'ラッピング'
+        dest: '届け先'
+        zipcode: '郵便番号'
+        payment: '支払い方法'
     errors:
       messages:
-        invalid: 'の入力形式が異なります。例)123-4567'
+        #invalid: 'の入力形式が異なります。例)123-4567'
         expired_at_too_old: 'は掲載開始日より新しい日時にしてください。'
         too_big_image: 'が大きすぎます(最大64KB)。'
         invalid_image: 'の形式が違います(JPEG, GIF, PNGのいずれかにしてください)。'
       models:
-        order:
-          blank: 'を選択してください。'
   views:
     pagination:
       first: '&laquo;'

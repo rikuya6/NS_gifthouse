@@ -4,7 +4,7 @@
 #
 #  id              :integer          not null, primary key
 #  email           :string           not null
-#  administrator   :boolean          default("f"), not null
+#  administrator   :boolean          default(FALSE), not null
 #  password_digest :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null

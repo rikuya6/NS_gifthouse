@@ -13,86 +13,81 @@
 
 ActiveRecord::Schema.define(version: 20160000000001) do
 
-  create_table "addresses", force: :cascade do |t|
-    t.integer  "order_id",   limit: 4,   null: false
-    t.string   "dest",       limit: 255, null: false
-    t.string   "zipcode",    limit: 255, null: false
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
   create_table "box_details", force: :cascade do |t|
-    t.integer  "giftbox_id", limit: 4, null: false
-    t.integer  "product_id", limit: 4, null: false
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.integer  "giftbox_id", null: false
+    t.integer  "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_index "box_details", ["giftbox_id"], name: "index_box_details_on_giftbox_id", using: :btree
-  add_index "box_details", ["product_id"], name: "index_box_details_on_product_id", using: :btree
+  add_index "box_details", ["giftbox_id"], name: "index_box_details_on_giftbox_id"
+  add_index "box_details", ["product_id"], name: "index_box_details_on_product_id"
 
   create_table "boxes", force: :cascade do |t|
-    t.integer  "capacity",   limit: 4,   null: false
-    t.string   "box_type",   limit: 255, null: false
-    t.integer  "price",      limit: 4,   null: false
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "capacity",   null: false
+    t.string   "box_type",   null: false
+    t.integer  "price",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string   "name",       limit: 255, null: false
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "giftboxes", force: :cascade do |t|
-    t.integer  "box_id",     limit: 4, null: false
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.integer  "box_id",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer  "product_id",  limit: 4, null: false
-    t.integer  "user_id",     limit: 4, null: false
-    t.integer  "wrapping_id", limit: 4, null: false
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.integer  "product_id",  null: false
+    t.integer  "user_id",     null: false
+    t.integer  "wrapping_id", null: false
+    t.string   "dest",        null: false
+    t.string   "zipcode",     null: false
+    t.integer  "payment",     null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "product_categories", force: :cascade do |t|
-    t.integer  "product_id",  limit: 4, null: false
-    t.integer  "category_id", limit: 4, null: false
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.integer  "product_id",  null: false
+    t.integer  "category_id", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
-  add_index "product_categories", ["category_id"], name: "index_product_categories_on_category_id", using: :btree
-  add_index "product_categories", ["product_id"], name: "index_product_categories_on_product_id", using: :btree
+  add_index "product_categories", ["category_id"], name: "index_product_categories_on_category_id"
+  add_index "product_categories", ["product_id"], name: "index_product_categories_on_product_id"
 
   create_table "products", force: :cascade do |t|
-    t.string   "name",         limit: 255,   null: false
-    t.integer  "price",        limit: 4,     null: false
-    t.integer  "weight",       limit: 4,     null: false
-    t.integer  "stock",        limit: 4,     null: false
-    t.text     "note",         limit: 65535, null: false
-    t.binary   "image",        limit: 65535
-    t.string   "content_type", limit: 255
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.string   "name",         null: false
+    t.integer  "price",        null: false
+    t.integer  "weight",       null: false
+    t.integer  "stock",        null: false
+    t.text     "note",         null: false
+    t.binary   "image"
+    t.string   "content_type"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",           limit: 255,                 null: false
-    t.boolean  "administrator",               default: false, null: false
-    t.string   "password_digest", limit: 255,                 null: false
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
+    t.string   "email",                           null: false
+    t.boolean  "administrator",   default: false, null: false
+    t.string   "password_digest",                 null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   create_table "wrappings", force: :cascade do |t|
-    t.string   "name",       limit: 255, null: false
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

@@ -23,11 +23,7 @@
         <td class="col-md-2"><%= order.user_email %></td>
         <td class="col-md-4"><%= order.product_name %></td>
         <td class="col-md-2"><%= order.wrapping_name %></td>
-        <td class="col-md-2">
-          <% order.addresses.each do |address| %>
-            <%= address.dest %>
-          <% end %>
-        </td>
+        <td class="col-md-2"><%= order.dest %></td>
         <td class="text-center col-md-2">
           <%= link_to '詳細', admin_user_order_path(order.user_id, order.id), class: 'btn btn-info btn-xs',
             style: 'width: 4em' %>

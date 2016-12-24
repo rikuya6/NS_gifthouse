@@ -3,9 +3,9 @@ class Admin::OrdersController < Admin::Base
   def index
     if params[:user_id].present?
       @user = User.find(params[:user_id])
-      @orders = @user.orders.includes(:product, :wrapping, :addresses).page(params[:page])
+      @orders = @user.orders.includes(:product, :wrapping).page(params[:page])
     else
-      @orders = Order.includes(:user, :product, :wrapping, :addresses).page(params[:page])
+      @orders = Order.includes(:user, :product, :wrapping).page(params[:page])
     end
   end
 

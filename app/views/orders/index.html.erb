@@ -23,11 +23,7 @@
         <td class="col-md-2"><%= h_datetime(order) %></td>
         <td class="text-right col-md-1"><%= number_with_delimiter(order.product_price) %></td>
         <td class="text-left col-md-3"><%= order.product_name %></td>
-        <td class="text-left col-md-4">
-          <% order.addresses.each do |address| %>
-            <%= address.dest %>
-          <% end %>
-        </td>
+        <td class="text-left col-md-4"><%= order.dest %></td>
         <td class="text-left col-md-1"><%= order.wrapping_name %></td>
         <td class="text-center col-md-1">
           <%= link_to '詳細', user_order_path(order.user_id, order.id), class: 'btn btn-info btn-xs',

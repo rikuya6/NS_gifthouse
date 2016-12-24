@@ -6,6 +6,9 @@
 #  product_id  :integer          not null
 #  user_id     :integer          not null
 #  wrapping_id :integer          not null
+#  dest        :string           not null
+#  zipcode     :string           not null
+#  payment     :integer          not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
@@ -16,12 +19,10 @@ class Order < ActiveRecord::Base
   belongs_to :user
   belongs_to :product
   belongs_to :wrapping
-  has_many :addresses, dependent: :destroy
 
   accepts_nested_attributes_for :user
   accepts_nested_attributes_for :product
   accepts_nested_attributes_for :wrapping
-  accepts_nested_attributes_for :addresses, allow_destroy: true
 
 
   # 委譲メソッド
@@ -40,4 +41,14 @@ class Order < ActiveRecord::Base
   validates :user_id,     presence: true
 
   validates :wrapping_id, presence: true
+
+  validates :dest,        presence: {
+                            allow_blank: true,
+                          }
+
+  validates :zipcode,     presence: true,
+                          format: {
+                            allow_blank: true,
+                            with: /\A\d{3}[-]\d{4}/,
+                          }
 end

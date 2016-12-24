@@ -14,6 +14,9 @@ class CreateBaseTables < ActiveRecord::Migration
       t.integer :product_id,  null: false
       t.integer :user_id,     null: false
       t.integer :wrapping_id, null: false
+      t.string  :dest,        null: false
+      t.string  :zipcode,     null: false
+      t.integer :payment,     null: false
 
       t.timestamps null: false
     end
@@ -76,15 +79,6 @@ class CreateBaseTables < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-
-    # 届け先
-    create_table :addresses do |t|
-      t.integer :order_id, null: false
-      t.string  :dest,     null: false
-      t.string  :zipcode,  null: false
-
-      t.timestamps null: false
-    end
   end
 
   def self.down
@@ -97,6 +91,5 @@ class CreateBaseTables < ActiveRecord::Migration
     drop_table :boxes
     drop_table :giftboxes
     drop_table :box_details
-    drop_table :addresses
   end
 end
