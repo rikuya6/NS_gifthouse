@@ -15,6 +15,13 @@ Rails.application.routes.draw do
     end
   end
 
+  resource :boxes do
+    collection do
+      post 'new/check' => 'boxes#check_product', as: 'check'
+      delete 'delete/check' => 'boxes#uncheck_product', as: 'uncheck'
+    end
+  end
+
   namespace :admin do
     root to: 'products#index'
     resources :products do
