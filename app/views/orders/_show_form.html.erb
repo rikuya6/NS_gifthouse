@@ -19,7 +19,7 @@
       <%= f.label :payment, class: 'control-label col-md-12' %>
       <div class="col-md-3">
         <%= f.select :payment, Order.payment.options, {prompt: true},
-          class: 'selectpicker show-tick show-menu-arrow', disabled: true %>
+          class: 'form-control', disabled: true %>
       </div>
     </div>
 
@@ -40,7 +40,7 @@
     <%= f.fields_for :wrapping do |ff| %>
       <div class="form-group">
         <%= ff.label :name, class: 'control-label col-md-12' %>
-        <div class="col-md-12">
+        <div class="col-md-3">
           <%= ff.text_field :name, class: 'form-control', disabled: true %>
         </div>
       </div>

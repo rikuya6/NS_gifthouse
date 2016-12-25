@@ -28,6 +28,12 @@ class OrdersController < MemberController
     end
   end
 
+  def new_confirmation
+    @order = current_user.orders.build(order_params)
+    @wrapping = Wrapping.all.pluck(:name, :id)
+    render 'new' if @order.invalid?
+  end
+
 
   private
 

@@ -30,7 +30,7 @@ module ApplicationHelper
     year = "#{object.created_at.year}年"
     month = "#{object.created_at.month}月"
     day = "#{object.created_at.day}日"
-    time = "#{object.created_at.hour}時#{object.created_at.min}分"
+    time = "#{object.created_at.hour}:#{object.created_at.min}"
     year + month + day + time
   end
 

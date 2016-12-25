@@ -6,8 +6,6 @@ class Admin::ProductsController < Admin::Base
 
   def show
     @product = Product.find(params[:id])
-    #return send_image if params[:format].in?(['jpg', 'png', 'gif'])
-    render 'show'
   end
 
   def new
@@ -62,15 +60,6 @@ class Admin::ProductsController < Admin::Base
 
 
   private
-
-  # def send_image
-  #   if @product.image.present?
-  #     send_data @product.image,
-  #       type: @product.content_type, disposition: 'inline'
-  #   else
-  #     raise NotFound
-  #   end
-  # end
 
   def product_params
     attrs = [:name, :price, :weight, :stock, :note, :image, :image_cache]

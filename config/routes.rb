@@ -8,7 +8,12 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :show]
   end
   resources :products
-  resource :orders
+
+  resource :orders do
+    collection do
+      post 'new/confirmation'  => 'orders#new_confirmation'
+    end
+  end
 
   namespace :admin do
     root to: 'products#index'
