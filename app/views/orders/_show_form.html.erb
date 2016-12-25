@@ -92,4 +92,7 @@
       </div>
     </div>
   <% end %>
+  <div class="col-md-offset-10 col-md-2">
+    <%= link_to '注文をキャンセル', user_order_path(@user, @order), method: :delete, class: 'btn btn-sm btn-danger' %>
+  </div>
 <% end %>

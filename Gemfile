@@ -19,6 +19,7 @@ gem 'puma'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'enumerize'
+gem 'faker'
 # gem 'mysql2'
 
 group :test do
@@ -40,5 +41,4 @@ group :development do
   gem 'pry-stack_explorer'
   gem 'annotate'
   gem 'bullet'
-  gem 'faker'
 end

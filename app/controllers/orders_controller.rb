@@ -1,5 +1,5 @@
 class OrdersController < MemberController
-  before_action :user_authorization, only: [:show]
+  before_action :user_authorization, only: [:index, :show, :destroy]
 
   def index
     @orders = Order.includes(:product, :wrapping)
@@ -26,6 +26,13 @@ class OrdersController < MemberController
     else
       render 'new'
     end
+  end
+
+  def destroy
+    @order = Order.find(params[:id])
+    @order.destroy
+    flash[:notice] = '注文をキャンセルしました。'
+    redirect_to user_orders_path
   end
 
   def new_confirmation
