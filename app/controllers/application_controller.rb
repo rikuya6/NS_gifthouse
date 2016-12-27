@@ -47,4 +47,14 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
+  def redirect_back_or(default)
+    redirect_to(session[:back_url] || default)
+    session.delete(:back_url)
+  end
+
+  def save_location
+    session[:back_url] = request.url if request.get?
+    session[:back_url] = products_path if params[:action] == 'check_product'
+  end
+
 end

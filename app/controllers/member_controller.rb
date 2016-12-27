@@ -5,6 +5,7 @@ class MemberController < ApplicationController
   private
 
   def login_required
+    save_location
     redirect_to :root, notice: 'ログインしてください。' unless current_user
   end
 

@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
       if user.administrator?
         redirect_to :admin_root
       else
-        redirect_to edit_user_path(user.id)
+        redirect_back_or edit_user_path(user.id)
       end
       flash[:notice] = 'ログインしました。'
     else
@@ -18,6 +18,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session.delete(:user_id)
+    cookies.clear
     flash[:notice] = 'ログアウトしました。'
     redirect_to :root
   end
