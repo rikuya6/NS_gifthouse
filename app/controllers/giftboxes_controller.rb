@@ -11,7 +11,6 @@ class GiftboxesController < MemberController
     else
       redirect_to products_path, notice: '詰め合わせ商品をお選びください'
     end
-
   end
 
   def create
