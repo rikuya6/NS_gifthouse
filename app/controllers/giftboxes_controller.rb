@@ -4,7 +4,6 @@ class GiftboxesController < MemberController
     liked = cookies.signed[:check_products]
     unless liked.blank?
       @giftbox = Giftbox.new
-      @boxes = Box.all.pluck(:box_type, :id)
       liked.each do |id|
         @giftbox.box_details.build(product_id: id)
       end
@@ -15,19 +14,24 @@ class GiftboxesController < MemberController
 
   def create
     @giftbox = Giftbox.new(giftbox_params)
-    @boxes = Box.all.pluck(:box_type, :id)
-    if @giftbox.save
+    if params[:back].present?
+      render 'new'
+    elsif @giftbox.save
       unlike_products(@giftbox.products.pluck(:id))
       @gift_product = create_gift_product
-      if @gift_product.save
-        redirect_to new_orders_path(product_id: @product.id)
-      else
-        @gift_product.destroy
-        redirect_to :root, alert: '誠に申し訳ございません。システムに問題が発生しました。'
-      end
+      @gift_product.save
+      redirect_to new_orders_path(product_id: @product.id)
     else
       render 'new'
     end
+  end
+
+  def new_confirmation
+    flash.now[:notice] = 'ボックスは商品の重さから最適なサイズが自動選択されました。'
+    @giftbox = Giftbox.new(giftbox_params)
+    @boxes = Box.all.pluck(:box_type, :id)
+    @giftbox.box_id = 3
+    render 'new' if @giftbox.invalid?
   end
 
   def check_product

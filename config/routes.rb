@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     collection do
       post 'new/check' => 'giftboxes#check_product', as: 'check'
       delete 'delete/check' => 'giftboxes#uncheck_product', as: 'uncheck'
+
+      post 'new/confirmation'  => 'giftboxes#new_confirmation'
     end
   end
 
