@@ -72,12 +72,10 @@ class GiftboxesController < MemberController
   end
 
   def unlike_products(product_id)
-    debug product_id
     check_products = cookies.signed[:check_products]
     product_id.each do |id|
       check_products.delete(id.to_s)
     end
     cookies.signed[:check_products] = check_products
-    debug cookies.signed[:check_products]
   end
 end
