@@ -30,7 +30,7 @@ class GiftboxesController < MemberController
     flash.now[:notice] = 'ボックスは商品の重さから最適なサイズが自動選択されました。'
     @giftbox = Giftbox.new(giftbox_params)
     @boxes = Box.all.pluck(:box_type, :id)
-    @giftbox.box_id = 3
+    @giftbox.box_id = select_box_id(@giftbox)
     render 'new' if @giftbox.invalid?
   end
 
@@ -56,7 +56,7 @@ class GiftboxesController < MemberController
   def giftbox_params
     attrs = [:box_id]
     attrs << { box_details_attributes: [:id, :giftbox_id, :product_id, :_destroy,
-      product_attributes: [:id ,:name]]}
+      product_attributes: [:id ,:name]] }
     params.require(:giftbox).permit(attrs)
   end
 
@@ -81,5 +81,22 @@ class GiftboxesController < MemberController
       check_products.delete(id.to_s)
     end
     cookies.signed[:check_products] = check_products
+  end
+
+  def select_box_id(giftbox)
+    product_id = []
+    giftbox.box_details.each do |box_details|
+      product_id << box_details.product_id
+    end
+    giftbox_sum_weight = Product.where(id: product_id).sum(:weight)
+    box_capacity = Box.pluck(:id, :capacity).sort
+    box_id = box_capacity[-1][0]
+    box_capacity.each do |capacity|
+      if giftbox_sum_weight <= capacity[1]
+        box_id = capacity[0]
+        break
+      end
+    end
+    box_id
   end
 end
