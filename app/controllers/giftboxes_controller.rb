@@ -68,6 +68,7 @@ class GiftboxesController < MemberController
     product_sum_price = @giftbox.products.sum(:price)
     @product.price = box_price + product_sum_price
     @product.weight = @giftbox.products.sum(:weight)
+    @product.categories << Category.where(name: 'ギフトボックス')
     @product
   end
 
