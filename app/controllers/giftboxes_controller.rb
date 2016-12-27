@@ -1,7 +1,9 @@
-class BoxesController < MemberController
+class GiftboxesController < MemberController
 
   def new
-    @likeed = cookies.signed[:check_products]
+    @liked = cookies.signed[:check_products]
+    @giftbox = Giftbox.new
+    @products = Product.where(id: @liked)
   end
 
   def create
@@ -24,22 +26,22 @@ class BoxesController < MemberController
       check_products << params[:product_id]
       cookies.signed[:check_products] = check_products
     end
-    redirect_to products_path, notice: 'チェックしました！'
+    redirect_to products_path, notice: '詰め合わせに追加しました'
   end
 
   def uncheck_product
     check_products = cookies.signed[:check_products]
     check_products.delete(params[:product_id])
     cookies.signed[:check_products] = check_products
-    redirect_to products_path, notice: 'チェックを外しました。'
+    redirect_to products_path, notice: '詰め合わせから削除しました'
   end
 
   private
 
   def box_params
-    attrs = [:product_id, :wrapping_id, :dest, :zipcode, :payment]
+    attrs = [:box_id]
     attrs << [:confirm]
     attrs << { product_attributes: [:id] }
-    params.require(:order).permit(attrs)
+    params.require(:giftbox).permit(attrs)
   end
 end

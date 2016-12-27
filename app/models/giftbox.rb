@@ -17,4 +17,5 @@ class Giftbox < ActiveRecord::Base
   has_many :box_details, dependent: :destroy
   has_many :products, through: :box_details
 
+
 end

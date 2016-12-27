@@ -3,7 +3,7 @@
   <ul class="nav navbar-nav">
     <li><%= link_to '商品一覧', products_path %></li>
     <% if current_user %>
-    <li><%= link_to 'ギフト注文', new_boxes_path %></li>
+    <li><%= link_to 'ギフト注文', new_giftboxes_path %></li>
     <li><%= link_to '注文一覧', user_orders_path(current_user) %></li>
     <li><%= link_to current_user.email + 'さん', edit_user_path(current_user) %></li>
     <li><%= link_to '管理画面', :admin_root if current_user.try(:administrator?) %></li>

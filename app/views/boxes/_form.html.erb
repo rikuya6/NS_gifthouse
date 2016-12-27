@@ -7,3 +7,15 @@
   <li><%= item %></li>
 <% end %>
 </ul>
+
+<%= form_for @giftbox, class: 'form-horizontal' do |f| %>
+  <%= f.fields_for :box_details do |ff| %>
+    <div class="form-group">
+      <label class="control-label col-md-12">ボックス</label>
+      <div class="col-md-3">
+        <%= f.text_field :product_id,
+                     class: 'form-control' %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

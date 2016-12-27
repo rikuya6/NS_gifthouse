@@ -11,10 +11,7 @@
     <div class="panel-heading">
       <h3 class="panel-title">
         <%= link_to product.name, product_path(product) %>
-        <%= link_to 'チェックする', check_boxes_path(product_id: product), method: :post,
-          class: 'btn btn-default' unless checked?(product.id) %>
-        <%= link_to 'チェック済', uncheck_boxes_path(product_id: product), method: :delete,
-          class: 'btn btn-link' if checked?(product.id) %>
+        <%= set_like_link(product) %>
       </h3>
     </div>
     <div class="panel-body">
