@@ -8,13 +8,17 @@
 <% end %>
 </ul>
 
-<%= form_for @giftbox, class: 'form-horizontal' do |f| %>
-  <div class="form-group">
-    <label class="col-md-12">カテゴリ</label>
-    <div class="chebox-inline col-md-12">
-      <%= f.collection_check_boxes :product_ids, @products, :id, :name do |ff| %>
-        <%= ff.label { ff.check_box(disabled: show?) + ff.text } %>
-      <% end %>
-    </div>
+<%= nested_form_for @giftbox, class: 'form-horizontal' do |f| %>
+  <%= f.fields_for :box_details do |ff| %>
+    <%= ff.fields_for :product do |fff| %>
+      <div class="form-group">
+        <%= fff.label :name, class: 'control-label col-md-12' %>
+        <div class="col-md-12">
+          <%= fff.text_field :name %>
+          <%= ff.link_to_remove '詰め合わせから外す' %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
   </div>
 <% end %>

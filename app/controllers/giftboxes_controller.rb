@@ -3,6 +3,9 @@ class GiftboxesController < MemberController
   def new
     @liked = cookies.signed[:check_products]
     @giftbox = Giftbox.new
+    @liked.each do |id|
+      @giftbox.box_details.build(product_id: id)
+    end
     @products = Product.where(id: @liked)
   end
 

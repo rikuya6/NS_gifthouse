@@ -17,5 +17,6 @@ class Giftbox < ActiveRecord::Base
   has_many :box_details, dependent: :destroy
   has_many :products, through: :box_details
 
+  accepts_nested_attributes_for :box_details, allow_destroy: true
 
 end
