@@ -12,4 +12,9 @@ class Giftbox < ActiveRecord::Base
 
   # 関連
   belongs_to :boxes
+
+  # ギフトボックス 商品
+  has_many :box_details, dependent: :destroy
+  has_many :products, through: :box_details
+
 end

@@ -18,11 +18,17 @@ class Product < ActiveRecord::Base
 
 
   # 関連
+
+  # 商品 カテゴリ
   has_many :product_categories, dependent: :destroy
   has_many :categories, through: :product_categories
+
+  # 注文
   has_many :orders, dependent: :destroy
 
-  accepts_nested_attributes_for :categories
+  # 商品 ギフトボックス
+  has_many :box_details, dependent: :destroy
+  has_many :giftboxes, through: :box_details
 
 
   # バリデーション
