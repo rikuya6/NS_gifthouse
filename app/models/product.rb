@@ -32,8 +32,7 @@ class Product < ActiveRecord::Base
 
 
   # バリデーション
-  validates :name,      presence: true,
-                        uniqueness: true
+  validates :name,      presence: true
 
   validates :price,     presence: true,
                         numericality: {

@@ -19,4 +19,7 @@ class Giftbox < ActiveRecord::Base
 
   accepts_nested_attributes_for :box_details, allow_destroy: true
 
+
+  # バリデーション
+  validates :box_id,      presence: true
 end
