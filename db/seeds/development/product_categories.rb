@@ -1,5 +1,5 @@
-1.upto(20) do |idx|
-  3.downto(1) do |k|
+2.upto(10) do |idx|
+  3.downto(2) do |k|
     ProductCategory.create!(
       product_id: idx,
       category_id: k
