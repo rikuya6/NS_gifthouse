@@ -27,11 +27,18 @@ class GiftboxesController < MemberController
   end
 
   def new_confirmation
-    flash.now[:notice] = 'ボックスは商品の重さから最適なサイズが自動選択されました。'
+    box_details_params = params[:giftbox][:box_details_attributes]
+    box_details_keys = box_details_params.keys
+    product_ids = []
+    box_details_params.each do |key|
+      product_ids << key[1]['product_id']
+    end
     @giftbox = Giftbox.new(giftbox_params)
+    @giftbox.ids_product = product_ids
     @boxes = Box.all.pluck(:box_type, :id)
     @giftbox.box_id = select_box_id(@giftbox)
     render 'new' if @giftbox.invalid?
+    flash.now[:notice] = 'ボックスは商品の重さから最適なサイズが自動選択されました。'
   end
 
   def check_product

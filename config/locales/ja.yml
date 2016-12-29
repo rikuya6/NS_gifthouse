@@ -36,12 +36,14 @@ ja:
         payment: '支払い方法'
       giftbox:
         box_id: 'ボックス'
+        bad_combinations: 'ギフトボックス：'
 
     errors:
       messages:
         expired_at_too_old: 'は掲載開始日より新しい日時にしてください。'
         too_big_image: 'が大きすぎます(最大10MB)。'
         invalid_image: 'の形式が違います(JPEG, GIF, PNGのいずれかにしてください)。'
+        bad_combinations: 'ギフトボックス：'
 
         carrierwave_processing_error: failed to be processed
         carrierwave_integrity_error: is not of an allowed file type

@@ -2,8 +2,15 @@ Category.create!(
   name: 'ギフトボックス'
 )
 
-1.upto(10) do |idx|
-  Category.create!(
-    name: Faker::GameOfThrones.house + "#{idx}"
-  )
-end
+Category.create!(
+  name: '書籍'
+)
+
+
+Category.create!(
+  name: '食品'
+)
+
+Category.create!(
+  name: '雑貨'
+)

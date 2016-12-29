@@ -78,6 +78,11 @@ class CreateBaseTables < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+
+    create_table :rules do |t|
+      t.integer :category_id1, null: false, index: true
+      t.integer :category_id2, null: false, index: true
+    end
   end
 
   def self.down
@@ -90,5 +95,6 @@ class CreateBaseTables < ActiveRecord::Migration
     drop_table :boxes
     drop_table :giftboxes
     drop_table :box_details
+    drop_table :rules
   end
 end
