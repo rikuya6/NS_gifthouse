@@ -135,7 +135,6 @@ GEM
       minitest (>= 5.0)
       ruby-progressbar
     multi_json (1.12.1)
-    mysql2 (0.4.5)
     nenv (0.3.0)
     nested_form (0.3.2)
     nokogiri (1.6.8.1)
@@ -264,7 +263,6 @@ DEPENDENCIES
   mini_backtrace
   mini_magick
   minitest-reporters
-  mysql2
   nested_form
   pry-byebug
   pry-doc
