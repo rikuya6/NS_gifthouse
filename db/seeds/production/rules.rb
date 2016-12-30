@@ -1,6 +1,6 @@
 2.upto(3) do |idx|
   Rule.create!(
-    category_id1: idx,
-    category_id2: idx + 1
+    category1: Category.find(idx),
+    category2: Category.find(idx + 1)
   )
 end

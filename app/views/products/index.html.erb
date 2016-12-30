@@ -1,11 +1,19 @@
 <% @page_title = '商品一覧' %>
 
 <div class="page-header">
-  <h1>商品一覧</h1>
+  <%= form_tag :products, method: :get , class: 'col-md-offset-2 col-md-10' do %>
+    <div class="col-md-8">
+      <%= text_field_tag 'keyword', params[:keyword], placeholder: 'キーワードを入力', class: 'form-control' %>
+    </div>
+    <div class="col-md-4">
+      <%= button_tag '<i class="glyphicon glyphicon-search"></i>'.html_safe,
+        type: 'submit', class: 'btn btn-info search' %>
+    </div>
+  <% end %>
 </div>
 
 <% if @products.present? %>
-<div class="panel-height">
+<div class="panel-height col-md-12">
   <% @products.each do |product| %>
   <div class="panel panel-info col-md-6 ">
     <div class="panel-heading">

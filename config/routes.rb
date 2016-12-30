@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resource :giftboxes do
+  resource :giftboxes, only: [:new, :create] do
     collection do
       post 'new/check' => 'giftboxes#check_product', as: 'check'
       delete 'delete/check' => 'giftboxes#uncheck_product', as: 'uncheck'
@@ -39,7 +39,7 @@ Rails.application.routes.draw do
     end
     resources :orders, only: [:index]
 
-    resources :rules, path: :setting
+    resources :rules, path: :setting, only: [:index, :new, :create, :destroy]
   end
 
   match '*anything' => 'top#not_found', via: [:get, :post, :patch, :delete]

@@ -46,4 +46,13 @@ module ApplicationHelper
   def tag_label(product)
     product.categories.map{|tag| "<span class=#{'"label label-primary"'}>#{tag.name}</span>" }.join(' ').html_safe
   end
+
+  def rule_tag_label(rule)
+    category1_name = Category.find(rule.category1_id).name
+    category2_name = Category.find(rule.category2_id).name
+    html = "<span class=#{'"label label-primary"'}>#{category1_name}</span> "
+    html +=  "<span class=#{'"label label-primary"'}>#{category2_name}</span>"
+    html.html_safe
+  end
+
 end

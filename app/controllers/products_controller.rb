@@ -2,9 +2,11 @@ class ProductsController < GuestController
 
   def index
     one = Product.includes(:categories)
+    one = one.where.not('categories.name' => 'ギフトボックス')
     if params[:keyword].present?
       keyword = params[:keyword]
-      one = one.where('products.name like ?', '%' + keyword + '%')
+      like_keyword = '%' + keyword.downcase + '%'
+      one = one.where('lower(products.name) like ? OR lower(categories.name) like ?', like_keyword, like_keyword)
     end
     @products = one.page(params[:page]).per(16)
   end

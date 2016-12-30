@@ -4,68 +4,30 @@ class Admin::RulesController < Admin::Base
     @rules = Rule.all.page(params[:page])
   end
 
-  def show
-    @rules = Rule.find(params[:id])
-  end
-
   def new
-    @product = Product.new
+    @rule = Rule.new
   end
 
   def create
-    @product = Product.new(product_params)
-    if params[:back].present?
-      render 'new'
-    elsif @product.save
-      redirect_to [:admin, @product], notice: '商品を新規登録しました。'
+    @rule = Rule.new(rule_params)
+    if @rule.save
+      redirect_to :admin_rules, notice: '詰め合わせルールを新規登録しました。'
     else
       render 'new'
-    end
-  end
-
-  def edit
-    @product = Product.find(params[:id])
-  end
-
-  def update
-    @product = Product.find(params[:id])
-    @product.assign_attributes(product_params)
-    #binding.pry
-    if params[:back].present?
-      @product.image.move_to_cache
-      render 'edit'
-    elsif @product.save
-      redirect_to [:admin, @product], notice: '商品を更新しました。'
-    else
-      render 'edit'
     end
   end
 
   def destroy
-    @product = Product.find(params[:id])
-    @product.destroy
-    redirect_to admin_products_path, notice: '商品を削除しました。'
-  end
-
-  def new_confirmation
-    @product = Product.new(product_params)
-    render 'new' if @product.invalid?
-  end
-
-  def edit_confirmation
-    @product = Product.find(params[:id])
-    @product.assign_attributes(product_params)
-    render 'edit' if @product.invalid?
+    @rule = Rule.find(params[:id])
+    @rule.destroy
+    redirect_to admin_rules_path, notice: '詰め合わせルールを削除しました。'
   end
 
 
   private
 
-  def product_params
-    attrs = [:name, :price, :weight, :stock, :note, :image, :image_cache]
-    attrs << [:confirm]
-    attrs << { categories_attributes: [:id, :name] }
-    attrs << { category_ids: [] }
-    params.require(:product).permit(attrs)
+  def rule_params
+    attrs = [:category1_id, :category2_id]
+    params.require(:rule).permit(attrs)
   end
 end

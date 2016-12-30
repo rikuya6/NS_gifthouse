@@ -3,8 +3,8 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   CarrierWave::SanitizedFile.sanitize_regexp = /[^[:word:]\.\-\+]/
 
-  # process resize_to_limit: [500, 500]
-  # process resize_to_fit: [250, 250]
+  process resize_to_limit: [500, 500]
+  process resize_to_fit: [350, 350]
 
   storage :file
 

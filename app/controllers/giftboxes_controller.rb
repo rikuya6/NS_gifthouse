@@ -30,9 +30,15 @@ class GiftboxesController < MemberController
     box_details_params = params[:giftbox][:box_details_attributes]
     box_details_keys = box_details_params.keys
     product_ids = []
+    valid_box = false
     box_details_params.each do |key|
-      product_ids << key[1]['product_id']
+      if key[1]['_destroy'] == 'false'
+        product_ids << key[1]['product_id']
+        valid_box = true
+      end
     end
+    # すべての商品を消して「ギフト注文」を押した場合
+    return redirect_to new_giftboxes_path, alert: '商品を選んでください。' unless valid_box
     @giftbox = Giftbox.new(giftbox_params)
     @giftbox.ids_product = product_ids
     @boxes = Box.all.pluck(:box_type, :id)

@@ -5,7 +5,8 @@
   )
 end
 
-3.upto(4) do |idx|
+product_cnt = Product.count
+3.upto(product_cnt) do |idx|
   ProductCategory.create!(
     product_id: idx,
     category_id: 3
