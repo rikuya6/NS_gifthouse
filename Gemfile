@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.2.7.1'
-gem 'sqlite3'
 gem 'sass-rails', '~> 5.0'
 gem 'bootstrap-sass'
 gem 'honoka-rails'
@@ -31,6 +30,7 @@ group :test do
 end
 
 group :development do
+  gem 'sqlite3'
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'byebug'
@@ -42,4 +42,9 @@ group :development do
   gem 'pry-stack_explorer'
   gem 'annotate'
   gem 'bullet'
+end
+
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
 end
