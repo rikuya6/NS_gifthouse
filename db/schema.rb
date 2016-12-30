@@ -76,12 +76,12 @@ ActiveRecord::Schema.define(version: 20160000000001) do
   end
 
   create_table "rules", force: :cascade do |t|
-    t.integer "category_id1", null: false
-    t.integer "category_id2", null: false
+    t.integer "category1_id", null: false
+    t.integer "category2_id", null: false
   end
 
-  add_index "rules", ["category_id1"], name: "index_rules_on_category_id1"
-  add_index "rules", ["category_id2"], name: "index_rules_on_category_id2"
+  add_index "rules", ["category1_id"], name: "index_rules_on_category1_id"
+  add_index "rules", ["category2_id"], name: "index_rules_on_category2_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                           null: false

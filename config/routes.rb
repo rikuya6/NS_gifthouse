@@ -38,6 +38,8 @@ Rails.application.routes.draw do
       resources :orders
     end
     resources :orders, only: [:index]
+
+    resources :rules, path: :setting
   end
 
   match '*anything' => 'top#not_found', via: [:get, :post, :patch, :delete]

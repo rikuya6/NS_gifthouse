@@ -10,10 +10,12 @@
 class Rule < ActiveRecord::Base
 
   # 関連
+  belongs_to :category1, class_name: :Category
+  belongs_to :category2, class_name: :Category
 
 
   # バリデーション
-  validates :category_id1, presence: true
+  validates :category1_id, presence: true
 
-  validates :category_id2, presence: true
+  validates :category2_id, presence: true
 end

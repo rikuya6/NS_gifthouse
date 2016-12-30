@@ -35,7 +35,7 @@ class Giftbox < ActiveRecord::Base
 
   def check_for_bad_combinations
     category_ids = ProductCategory.where(product_id: self.ids_product).pluck(:category_id)
-    if Rule.where(category_id1: category_ids, category_id2: category_ids).present?
+    if Rule.where(category1_id: category_ids, category2_id: category_ids).present?
       errors.add(:bad_combinations, 'これらの商品は組み合わせることができません。')
     end
   end

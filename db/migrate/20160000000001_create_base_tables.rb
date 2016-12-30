@@ -80,8 +80,8 @@ class CreateBaseTables < ActiveRecord::Migration
     end
 
     create_table :rules do |t|
-      t.integer :category_id1, null: false, index: true
-      t.integer :category_id2, null: false, index: true
+      t.integer :category1_id, null: false, index: true
+      t.integer :category2_id, null: false, index: true
     end
   end
 
