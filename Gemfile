@@ -21,7 +21,7 @@ gem 'mini_magick'
 gem 'enumerize'
 gem 'faker'
 gem 'nested_form'
-# gem 'mysql2'
+#gem 'mysql2'
 
 group :test do
   gem 'factory_girl_rails'

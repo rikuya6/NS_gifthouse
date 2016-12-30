@@ -5,3 +5,9 @@
     price: idx * 100
   )
 end
+
+Box.create!(
+  capacity: 500,
+  box_type: 'スーパキャパシティボックス',
+  price: 2000
+)

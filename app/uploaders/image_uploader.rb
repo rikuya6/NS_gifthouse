@@ -3,8 +3,8 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   CarrierWave::SanitizedFile.sanitize_regexp = /[^[:word:]\.\-\+]/
 
-  process resize_to_limit: [500, 500]
-  process resize_to_fit: [250, 250]
+  # process resize_to_limit: [500, 500]
+  # process resize_to_fit: [250, 250]
 
   storage :file
 
@@ -12,7 +12,7 @@ class ImageUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  def extension_white_list
-    %w(jpg jpeg gif png)
-  end
+  # def extension_white_list
+  #   %w(jpg jpeg gif png)
+  # end
 end

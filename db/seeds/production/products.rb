@@ -2,7 +2,7 @@ Faker::Config.locale = :ja
 
 #path = Rails.root.join('db/seeds/development', "product1.png")
 
-1.upto(20) do |idx|
+1.upto(5) do |idx|
   product = Product.new(
     name: Faker::Book.title + "#{idx}",
     price: idx * 100,
