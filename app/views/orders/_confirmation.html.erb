@@ -10,6 +10,7 @@
 <h2>注文確認ページ</h2>
 
 <%= f.fields_for :product do |ff| %>
+  <%= ff.hidden_field :stock %>
   <div class="form-group">
     <%= ff.label :name, class: 'control-label col-md-12' %>
     <div class="col-md-12">
