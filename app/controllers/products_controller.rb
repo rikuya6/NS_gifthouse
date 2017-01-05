@@ -2,7 +2,7 @@ class ProductsController < GuestController
 
   def index
     one = Product.includes(:categories)
-    one = one.where.not('categories.name' => 'ギフトボックス')
+    one = one.where.not('categories.name' => 'ギフトボックス', stock: 0)
     if params[:keyword].present?
       keyword = params[:keyword]
       like_keyword = '%' + keyword.downcase + '%'
@@ -13,5 +13,6 @@ class ProductsController < GuestController
 
   def show
     @product = Product.find(params[:id])
+    redirect_to products_path, alert: '申し訳ありません。在庫がございません。' if @product.stock <= 0
   end
 end

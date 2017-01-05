@@ -1,6 +1,7 @@
 <%= f.hidden_field :product_id %>
 
 <%= f.fields_for :product do |ff| %>
+  <%= ff.hidden_field :stock %>
   <div class="form-group">
     <%= ff.label :image, class: 'control-label col-md-12'  %>
     <div class="col-md-12">

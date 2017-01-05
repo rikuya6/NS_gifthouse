@@ -5,10 +5,16 @@ class GiftboxesController < MemberController
     unless liked.blank?
       @giftbox = Giftbox.new
       liked.each do |id|
-        @giftbox.box_details.build(product_id: id)
+        if no_stock_or_deleted_product?(id)
+          unlike_products([id])
+          product_name = Product.find_by(id: id).name + 'は' || ''
+          redirect_to products_path, alert: "申し訳ありません。#{product_name}在庫がございません。"
+        else
+          @giftbox.box_details.build(product_id: id)
+        end
       end
     else
-      redirect_to products_path, notice: '詰め合わせ商品をお選びください'
+      redirect_to products_path, alert: '詰め合わせ商品をお選びください'
     end
   end
 
@@ -111,5 +117,11 @@ class GiftboxesController < MemberController
       end
     end
     box_id
+  end
+
+  def no_stock_or_deleted_product?(id)
+    product = Product.find_by(id: id)
+    return true if product.nil?
+    (product.stock <= 0)
   end
 end
