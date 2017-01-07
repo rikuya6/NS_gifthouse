@@ -1,6 +1,6 @@
 Faker::Config.locale = :ja
 
-pic_path = Rails.root.join('db/seeds/development', "product1.png")
+pic_path = "#{Rails.root}/db/seeds/production/product1.png"
 
 1.upto(5) do |idx|
   product = Product.new(
@@ -9,6 +9,6 @@ pic_path = Rails.root.join('db/seeds/development', "product1.png")
     weight: idx * 5,
     stock: idx,
     note: Faker::Lorem.paragraph,
-    image: pic_path
+    image: open(pic_path)
   )
 end
