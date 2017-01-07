@@ -61,12 +61,12 @@ class GiftboxesController < MemberController
       check_products << params[:product_id]
       cookies.signed[:check_products] = check_products.uniq
     end
-    redirect_to products_path, notice: '詰め合わせに追加しました'
+    redirect_to products_path(page: params[:page]), notice: '詰め合わせに追加しました'
   end
 
   def uncheck_product
     unlike_products([params[:product_id]])
-    redirect_to products_path, notice: '詰め合わせから削除しました'
+    redirect_to products_path(page: params[:page]), notice: '詰め合わせから削除しました'
   end
 
 
