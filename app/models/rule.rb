@@ -25,7 +25,7 @@ class Rule < ActiveRecord::Base
   private
 
   def check_uniq
-    return !category1_id.present? && !category2_id.present?
+    return true if !category1_id.present? && !category2_id.present?
     return errors.add(:check_uniq, '同じカテゴリは登録できません。') if category1_id == category2_id
     if Rule.where(category1_id: category1_id, category2_id: category2_id).present?
       errors.add(:check_uniq, 'この組み合わせはすでに登録されています。')
@@ -33,6 +33,5 @@ class Rule < ActiveRecord::Base
     if Rule.where(category1_id: category2_id, category2_id: category1_id).present?
       errors.add(:check_uniq, 'この組み合わせはすでに登録されています。')
     end
-    #binding.pry
   end
 end
