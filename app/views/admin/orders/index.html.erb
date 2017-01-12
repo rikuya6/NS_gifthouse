@@ -29,7 +29,7 @@
         <td class="text-center">
           <%= link_to '詳細', admin_user_order_path(order.user_id, order.id), class: 'btn btn-info btn-xs',
             style: 'width: 4em' %>
-          <%= link_to '削除', admin_user_order_path(order.user_id, order.id), method: :delete, class: 'btn btn-xs btn-danger',
+          <%= link_to '削除', admin_user_order_path(order.user_id, order.id, user: params[:user_id]), method: :delete, class: 'btn btn-xs btn-danger',
             style: 'width: 4em;', data: { disable_with: '削除中'} %>
         </td>
       </tr>
