@@ -1,17 +1,17 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.8'
-gem 'sass-rails', '~> 5.0'
+gem 'rails', '4.2.10'
+gem 'sass-rails'
 gem 'bootstrap-sass'
 gem 'honoka-rails'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.1.0'
+gem 'uglifier'
+gem 'coffee-rails'
 gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
 gem 'turbolinks'
-gem 'jbuilder', '~> 2.0'
-gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'bcrypt', '~> 3.1.7'
+gem 'jbuilder'
+gem 'sdoc', group: :doc
+gem 'bcrypt'
 gem 'rails-i18n'
 gem 'kaminari'
 gem 'puma'
@@ -31,7 +31,7 @@ end
 
 group :development do
   gem 'sqlite3'
-  gem 'web-console', '~> 2.0'
+  gem 'web-console'
   gem 'spring'
   gem 'byebug'
   gem 'guard'
